@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+    public float rotation_treeshold = 0.9f;
+
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        Vector2 axis = new Vector2(Input.GetAxisRaw("Secondary_Horizontal"), -Input.GetAxisRaw("Secondary_Vertical"));
 
-        float axis_h = Input.GetAxisRaw("Secondary_Horizontal");
-        float axis_v = Input.GetAxisRaw("Secondary_Vertical");
-
-        if (axis_h != 0.0f  || axis_v != 0.0f)
+        if (axis.magnitude > rotation_treeshold)
         {
-            float angle = Mathf.Atan2(axis_v, axis_h);
-            Quaternion tmp = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.up);
+            float angle = (Mathf.Atan2(axis.x, axis.y) * Mathf.Rad2Deg);
+            Quaternion tmp = Quaternion.AngleAxis(angle , Vector3.up);
             transform.rotation = tmp;
-        }
-
-       
+        }      
     }
 }
