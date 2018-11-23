@@ -34,7 +34,9 @@ public class Enemy : MonoBehaviour {
                 }
             }
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.GetComponent<Transform>().position, step);
+            Vector3 targetPos = target.GetComponent<Transform>().position;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            transform.rotation = Quaternion.LookRotation(targetPos - transform.position, Vector3.up);
         }
 
         if (reached && played == false)
