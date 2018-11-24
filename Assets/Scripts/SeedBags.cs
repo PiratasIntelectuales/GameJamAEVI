@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SeedBags : MonoBehaviour {
-    public GameObject musicSeed;
+    public GameObject seed;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,11 +16,6 @@ public class SeedBags : MonoBehaviour {
 
     public GameObject ClickedOn()
     {
-        if(gameObject.CompareTag("MusicBag"))
-        {
-            return Instantiate(musicSeed, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
-        }
-
-        return null;
+        return Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
     }
 }
