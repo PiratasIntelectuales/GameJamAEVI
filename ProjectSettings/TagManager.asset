@@ -10,6 +10,9 @@ TagManager:
   - MusicSeed
   - FilmBag
   - FilmSeed
+  - Tear
+  - Well
+  - Bucket
   layers:
   - Default
   - TransparentFX

@@ -22,9 +22,15 @@ public class Player : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
                     SeedBags tempScript = hit.collider.gameObject.GetComponent<SeedBags>();
+                    Bucket tempBucket = hit.collider.gameObject.GetComponent<Bucket>();
                     if (tempScript != null)
                     {
                         heldObj = tempScript.ClickedOn();
+                        heldObj.GetComponent<Rigidbody>().useGravity = false;
+                    }
+                    else if(tempBucket != null)
+                    {
+                        heldObj = hit.collider.gameObject;
                         heldObj.GetComponent<Rigidbody>().useGravity = false;
                     }
                 }
