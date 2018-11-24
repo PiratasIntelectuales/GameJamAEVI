@@ -33,9 +33,13 @@ public class Plant : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Tear") == true)
+        if(other.gameObject.CompareTag("Tear") == true && waterTimer >= timeWatered)
         {
             waterTimer = 0.0f;
+            Destroy(other.gameObject);
+        }
+        else if(other.gameObject.CompareTag("Tear"))
+        {
             Destroy(other.gameObject);
         }
     }
