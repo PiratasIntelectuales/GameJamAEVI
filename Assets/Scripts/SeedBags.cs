@@ -16,6 +16,6 @@ public class SeedBags : MonoBehaviour {
 
     public GameObject ClickedOn()
     {
-        return Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
+        return Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, -90, 0));
     }
 }

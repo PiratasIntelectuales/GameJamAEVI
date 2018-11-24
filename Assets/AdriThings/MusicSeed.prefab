@@ -19,13 +19,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4178156891206502}
-  - component: {fileID: 33336703794104984}
-  - component: {fileID: 23066576805501618}
-  - component: {fileID: 136190793188494364}
-  - component: {fileID: 54718869702597048}
+  - component: {fileID: 33193785532903644}
+  - component: {fileID: 23482204206304550}
+  - component: {fileID: 65419296546237284}
+  - component: {fileID: 54830329311647072}
   m_Layer: 0
   m_Name: MusicSeed
-  m_TagString: Untagged
+  m_TagString: MusicSeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,14 +36,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466977271299700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.66503, y: 46.91996, z: 344.48682}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -14.010471, y: 46.577908, z: 281.85663}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23066576805501618
+--- !u!23 &23482204206304550
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,14 +78,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33336703794104984
+--- !u!33 &33193785532903644
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466977271299700}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54718869702597048
+  m_Mesh: {fileID: 4300000, guid: 1b0e651596d690d4a9b64158dd414302, type: 3}
+--- !u!54 &54830329311647072
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &136190793188494364
-CapsuleCollider:
+--- !u!65 &65419296546237284
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,7 +109,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 0.361972, y: 3.6529136, z: 3.4476368}
+  m_Center: {x: -0.055985972, y: 0.02725041, z: 0}

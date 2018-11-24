@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Plant
   - MusicBag
+  - Pot
+  - MusicSeed
+  - FilmBag
+  - FilmSeed
   layers:
   - Default
   - TransparentFX
