@@ -25,6 +25,7 @@ public class Pot : MonoBehaviour {
         {
             GameObject temp = Instantiate(musicLvl1, transform);
             temp.transform.position = new Vector3(transform.position.x + offsetmusicLvl1.x, transform.position.y + offsetmusicLvl1.y, transform.position.z + offsetmusicLvl1.z);
+            temp.transform.localScale = new Vector3(temp.transform.localScale.x / transform.localScale.x, temp.transform.localScale.y / transform.localScale.y, temp.transform.localScale.z / transform.localScale.z);
             Destroy(other.gameObject);
             planted = true;
         }

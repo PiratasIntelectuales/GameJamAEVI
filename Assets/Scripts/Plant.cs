@@ -24,8 +24,10 @@ public class Plant : MonoBehaviour {
             if (timer >= timeToGrow)
             {
                 Vector3 parentPos = transform.parent.transform.position;
+                Vector3 parentScale = transform.parent.transform.localScale;
                 GameObject temp = Instantiate(nextLevel, transform.parent.transform);
                 temp.transform.position = new Vector3(parentPos.x + offset.x, parentPos.y + offset.y, parentPos.z + offset.z);
+                temp.transform.localScale = new Vector3(temp.transform.localScale.x / parentScale.x, temp.transform.localScale.y / parentScale.y, temp.transform.localScale.z / parentScale.z);
                 Destroy(gameObject);
             }
         }
