@@ -33,6 +33,11 @@ public class UiManager : MonoBehaviour {
         Application.Quit();
     }
 
+    public void NextDay()
+    {
+
+    }
+
     public void Play()
     {
         Uianimator.SetBool("Playing", true);
