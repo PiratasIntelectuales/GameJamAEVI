@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     private GameObject heldObj;
+
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
         if (heldObj == null)
         {
             if (Input.GetMouseButtonDown(0) == true)

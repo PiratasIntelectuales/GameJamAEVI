@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
 
     // Use this for initialization
-    public float rotation_treeshold = 0.9f;
-
     public float time_between_shots = 0.5f;
     float timer = 0.0f;
 
@@ -15,19 +13,26 @@ public class PlayerShoot : MonoBehaviour {
     public GameObject shot_position;
 
     public int gun_damage = 40;
+    public Camera cam;
 
+    Plane floor;
 	void Start () {
         shot = GetComponent<LineRenderer>();
         shot.enabled = false;
+
+        floor = new Plane(Vector3.up, Vector3.zero);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         //Rotate
-        Vector2 axis = new Vector2(Input.GetAxisRaw("Secondary_Horizontal"), -Input.GetAxisRaw("Secondary_Vertical"));
+        HandleRotation();
 
-        if (axis.magnitude > rotation_treeshold)
+        //Shoot
+        HandleShooting();
+
+        /*if (axis.magnitude > rotation_treeshold)
         {
             float angle = (Mathf.Atan2(axis.x, axis.y) * Mathf.Rad2Deg);
             Quaternion tmp = Quaternion.AngleAxis(angle , Vector3.up);
@@ -35,13 +40,7 @@ public class PlayerShoot : MonoBehaviour {
 
             Shoot();
 
-        }
-
-        Debug.Log(transform.forward);
-        Debug.DrawLine(transform.position, (transform.position + transform.forward));
-
-       
-
+        }*/
 
     }
 
@@ -58,6 +57,7 @@ public class PlayerShoot : MonoBehaviour {
             
             if(info.transform)
             {
+                Debug.Log("HIT");
                 info.transform.GetComponent<Enemy>().GetHit(gun_damage);
             }
 
@@ -67,6 +67,29 @@ public class PlayerShoot : MonoBehaviour {
         else
         {
             timer += Time.deltaTime;
+        }
+    }
+
+    void HandleRotation()
+    {
+        Ray mouse_ray = cam.ScreenPointToRay(Input.mousePosition);
+        float distance;
+        if (floor.Raycast(mouse_ray, out distance))
+        {
+            Vector3 target = mouse_ray.GetPoint(distance);
+            Vector3 direction = target - transform.position;
+
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, rotation, 0);
+        }
+    }
+
+    void HandleShooting()
+    {
+        //if right Click
+        if(Input.GetMouseButton(0))
+        {
+            Shoot();
         }
     }
 
