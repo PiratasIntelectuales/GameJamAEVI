@@ -689,6 +689,9 @@ MonoBehaviour:
   maxSpeed: 10
   minSpeed: 5
   deceleration: 4
+  life: 100
+  prefab_spawn_particle_system: {fileID: 1591659697369156, guid: 3c626d1292f3f694b9a596d897b0a3d3,
+    type: 2}
 --- !u!114 &114213946484588748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -703,6 +706,9 @@ MonoBehaviour:
   maxSpeed: 10
   minSpeed: 5
   deceleration: 4
+  life: 100
+  prefab_spawn_particle_system: {fileID: 1591659697369156, guid: 3c626d1292f3f694b9a596d897b0a3d3,
+    type: 2}
 --- !u!114 &114442061085936494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -717,6 +723,9 @@ MonoBehaviour:
   maxSpeed: 10
   minSpeed: 5
   deceleration: 4
+  life: 100
+  prefab_spawn_particle_system: {fileID: 1591659697369156, guid: 3c626d1292f3f694b9a596d897b0a3d3,
+    type: 2}
 --- !u!136 &136017192328157216
 CapsuleCollider:
   m_ObjectHideFlags: 1

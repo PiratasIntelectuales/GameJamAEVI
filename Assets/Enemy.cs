@@ -14,17 +14,50 @@ public class Enemy : MonoBehaviour {
 
     public int life = 100;
 
-	// Use this for initialization
-	void Start ()
+    bool particle_spawn_activated = true;
+    float particle_timer = 0.0f;
+    public GameObject prefab_spawn_particle_system;
+    GameObject spawn_particle_system;
+
+    // Use this for initialization
+    void Start ()
     {
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Plant");
         target = temp[Random.Range(0, temp.Length)];
         speed = maxSpeed;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+        
+    }
+
+    private void OnEnable()
     {
+        spawn_particle_system = Instantiate(prefab_spawn_particle_system, transform);
+        spawn_particle_system.SetActive(true);
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<MeshRenderer>();
+        foreach(MeshRenderer comp in GetComponentsInChildren<MeshRenderer>())
+        {
+            comp.enabled = false;
+        }
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        //particle spawn
+        if(spawn_particle_system != null)
+        {
+            if (particle_timer >= 3.0)
+            {
+                Destroy(spawn_particle_system);
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            else particle_timer += Time.deltaTime;
+
+            return;
+        }
+
+        //Spawn enemy
 		if(!reached)
         {
             if (speed > minSpeed)
