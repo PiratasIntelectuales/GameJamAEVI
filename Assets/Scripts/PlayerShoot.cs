@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SHOT_TYPE
+{
+    LASER, 
+    SHOTGUN
+}
+
 public class PlayerShoot : MonoBehaviour {
 
     // Use this for initialization
-    public float time_between_shots = 0.5f;
+    public float laser_time_between_shots = 0.5f;
+    public float shotgun_time_between_shots = 0.5f;
     float timer = 0.0f;
 
-    public float shoot_distance = 100;
+    public float laser_shoot_distance = 100;
+    public float shotgun_shoot_distance = 50;
     LineRenderer shot;
     public GameObject shot_position;
 
-    public int gun_damage = 40;
+    SHOT_TYPE shot_type = SHOT_TYPE.LASER;
+    public int laser_gun_damage = 40;
+    public int shotgun_damage = 20;
+    public float spread_angle_shot = 20;
     public Camera cam;
 
     Plane floor;
@@ -26,50 +37,84 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //Line renderer shut down
+        HandleLineRenderer();
+
         //Rotate
         HandleRotation();
 
         //Shoot
         HandleShooting();
 
-        /*if (axis.magnitude > rotation_treeshold)
-        {
-            float angle = (Mathf.Atan2(axis.x, axis.y) * Mathf.Rad2Deg);
-            Quaternion tmp = Quaternion.AngleAxis(angle , Vector3.up);
-            transform.rotation = tmp;
-
-            Shoot();
-
-        }*/
-
     }
 
     void Shoot()
     {
         //Shoot logic
-        if (timer >= time_between_shots)
+        switch (shot_type)
         {
-            //Shoot
-            Ray tmp_ray = new Ray(transform.position, transform.forward);
-            RaycastHit info;
+            case SHOT_TYPE.LASER:
 
-            Physics.Raycast(tmp_ray, out info, shoot_distance, 9); //9 for Enemy
-            
-            if(info.transform)
-            {
-                Debug.Log("HIT");
-                info.transform.GetComponent<Enemy>().GetHit(gun_damage);
-            }
+                if (timer >= laser_time_between_shots)
+                {
+                    Ray tmp_ray = new Ray(transform.position, transform.forward);
+                    RaycastHit info;
 
-            StartCoroutine("RenderTracer");
-            timer = 0.0f;
+                    Physics.Raycast(tmp_ray, out info, laser_shoot_distance, 9); //9 for Enemy
+
+                    if (info.transform)
+                    {                       
+                        info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
+                    }
+
+                    LaserRenderTracer();
+                    timer = 0.0f;
+                }
+                else
+                {
+                    timer += Time.deltaTime;
+                }
+                break;
+
+            case SHOT_TYPE.SHOTGUN:
+
+                if (timer >= shotgun_time_between_shots)
+                {
+                    Debug.Log("HIT");
+                    Ray[] shots = new Ray[3];
+                    int index = 0;
+                    for (float i = -spread_angle_shot; i <= spread_angle_shot; i += spread_angle_shot)
+                    {
+                        Debug.Log(i);
+                        Quaternion rotation = Quaternion.Euler(new Vector3(0.0f, i, 0.0f));
+                        Vector3 shot_dir = rotation * transform.forward;
+                        shots[index] = new Ray(transform.position, shot_dir);
+                        index++;
+                    }
+
+                    foreach (Ray ray in shots)
+                    {
+                        RaycastHit info;
+                        Physics.Raycast(ray, out info, shotgun_shoot_distance, 9);
+                        if (info.transform)
+                        {
+                            info.transform.GetComponent<Enemy>().GetHit(shotgun_damage);
+                            
+                        }
+                    }
+
+                    ShotgunRenderTracer(shots);
+                    timer = 0.0f;
+
+                }
+                else timer += Time.deltaTime;
+                break;
         }
-        else
-        {
-            timer += Time.deltaTime;
-        }
+
+       
+        
     }
-
+        
     void HandleRotation()
     {
         Ray mouse_ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -91,16 +136,45 @@ public class PlayerShoot : MonoBehaviour {
         {
             Shoot();
         }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            if (shot.enabled == true)
+                shot.enabled = false;
+        }
+        
+        if(Input.GetMouseButton(1))
+        {
+            shot_type = SHOT_TYPE.SHOTGUN;
+        }
+
     }
 
-    IEnumerator RenderTracer()
+    void LaserRenderTracer()
     {
         shot.enabled = true;
         shot.SetPosition(0, transform.position);
-        shot.SetPosition(1, transform.position + (transform.forward * shoot_distance));
-        
-        yield return null;
-        shot.enabled = false;
+        shot.SetPosition(1, transform.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(2, transform.position);
+        shot.SetPosition(3, transform.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(4, transform.position);
+        shot.SetPosition(5, transform.position + (transform.forward * laser_shoot_distance));
     }
 
+    void ShotgunRenderTracer(Ray[] directions)
+    {
+        shot.enabled = true;
+        shot.SetPosition(0, transform.position);
+        shot.SetPosition(1, transform.position + (directions[0].direction * shotgun_shoot_distance));
+        shot.SetPosition(2, transform.position);
+        shot.SetPosition(3, transform.position + (directions[1].direction * shotgun_shoot_distance));
+        shot.SetPosition(4, transform.position);
+        shot.SetPosition(5, transform.position + (directions[2].direction * shotgun_shoot_distance));        
+    }
+
+    void HandleLineRenderer()
+    {
+        if (shot.enabled == true)
+            shot.enabled = false;
+    }
 }
