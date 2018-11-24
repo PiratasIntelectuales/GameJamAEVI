@@ -26,6 +26,8 @@ public class PlayerShoot : MonoBehaviour {
     public float spread_angle_shot = 20;
     public Camera cam;
 
+    public GameObject shot_particles;
+
     Plane floor;
 	void Start () {
         shot = GetComponent<LineRenderer>();
@@ -39,6 +41,8 @@ public class PlayerShoot : MonoBehaviour {
     {
         //Line renderer shut down
         HandleLineRenderer();
+
+        HandleParticles();
 
         //Rotate
         HandleRotation();
@@ -57,6 +61,8 @@ public class PlayerShoot : MonoBehaviour {
 
                 if (timer >= laser_time_between_shots)
                 {
+                    shot_particles.SetActive(true);
+
                     Ray tmp_ray = new Ray(transform.position, transform.forward);
                     RaycastHit info;
 
@@ -80,7 +86,7 @@ public class PlayerShoot : MonoBehaviour {
 
                 if (timer >= shotgun_time_between_shots)
                 {
-                    Debug.Log("HIT");
+                    shot_particles.SetActive(true);
                     Ray[] shots = new Ray[3];
                     int index = 0;
                     for (float i = -spread_angle_shot; i <= spread_angle_shot; i += spread_angle_shot)
@@ -127,6 +133,12 @@ public class PlayerShoot : MonoBehaviour {
             float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
+    }
+
+    void HandleParticles()
+    {
+        if (!shot_particles.GetComponent<ParticleSystem>().isEmitting)
+            shot_particles.SetActive(false);
     }
 
     void HandleShooting()
