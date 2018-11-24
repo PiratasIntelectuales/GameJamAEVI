@@ -5,11 +5,12 @@ using UnityEngine;
 public class Plant : MonoBehaviour {
     public GameObject nextLevel;
     public float timeToGrow = 5.0f;
-    public float timeWatered = 3.0f;
     public Vector3 offset;
+    public int dropsNeeded = 4;
+    public GameObject coolStars;
 
     private float timer = 0.0f;
-    private float waterTimer = 0.0f;
+    private int currentDrops = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +18,8 @@ public class Plant : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (waterTimer < timeWatered)
+        if (currentDrops >= dropsNeeded)
         {
-            waterTimer += Time.deltaTime;
             timer += Time.deltaTime;
             if (timer >= timeToGrow)
             {
@@ -33,13 +33,15 @@ public class Plant : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Tear") == true && waterTimer >= timeWatered)
+        if(other.gameObject.CompareTag("Tear") == true)
         {
-            waterTimer = 0.0f;
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.CompareTag("Tear"))
-        {
+            currentDrops++;
+            if(currentDrops == dropsNeeded)
+            {
+                Vector3 potPos = transform.parent.transform.position;
+                GameObject stars = Instantiate(coolStars);
+                stars.transform.position = new Vector3(potPos.x - 2.9f, potPos.y + 3f, potPos.z);
+            }
             Destroy(other.gameObject);
         }
     }

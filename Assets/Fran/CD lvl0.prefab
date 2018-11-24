@@ -353,5 +353,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevel: {fileID: 1243910966894034, guid: f33cfca7ce3b1044aa975a37533ef5e0, type: 2}
   timeToGrow: 5
-  timeWatered: 3
   offset: {x: -0.5, y: 2.59, z: 0}
+  dropsNeeded: 4
+  coolStars: {fileID: 1482596948950906, guid: 4b50233f2a0c6b841b7d2fd9210a574b, type: 2}
