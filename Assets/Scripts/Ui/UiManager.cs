@@ -39,6 +39,10 @@ public class UiManager : MonoBehaviour {
         Application.Quit();
     }
 
+    public void EnableDisable(GameObject GO)
+    {
+        GO.SetActive(!GO.activeSelf);
+    }
 
     public void NextDay()
     {
