@@ -12,6 +12,8 @@ public class ShopManager : MonoBehaviour
     public GameObject canvs;
     Animator animtor;
 
+    public Text Money_in_Shop;
+
     [Space]// speed
     public float[] Zero_Update_Adds; // que bonus le añade al jugador
     public int[] Zero_Update_Cost; // cuanto cuesta cada una de las updates
@@ -99,6 +101,15 @@ public class ShopManager : MonoBehaviour
         text.text = str;
     }
 
+    void setTextColorRed(Text text)
+    {
+        text.color = Color.red;
+    }
+    void setTextColorBlack(Text text)
+    {
+        text.color = new Color(50f/255f, 50f/255f, 50f/255f);
+    }
+
 
     public void buy(int tobuy/*0-Zero, 1-First, 2-Second, 3-Third, 4-Fourt */)
     {
@@ -109,11 +120,15 @@ public class ShopManager : MonoBehaviour
                 {
                     playerManag.addSpeed(Zero_Update_Adds[Zero_Update_State]);
                     this.Zero_Update_State++;
+
+                    setTextColorBlack(Zero_Text_Money);
                 }  
                 else
                 {
                     // cant buuy
-                    animtor.SetTrigger("CantBuy");
+                    // animtor.SetTrigger("CantBuy");
+
+                    setTextColorRed(Zero_Text_Money);
                 }
                 break;
 
@@ -122,11 +137,13 @@ public class ShopManager : MonoBehaviour
                 {
                     playerManag.addPlantsImprove(First_Update_Adds[First_Update_State]);
                     this.First_Update_State++;
+                    setTextColorBlack(First_Text_Money);
                 }
                 else
                 {
+                    setTextColorRed(First_Text_Money);
                     // cant buuy
-                    animtor.SetTrigger("CantBuy");
+                    //animtor.SetTrigger("CantBuy");
                 }
                 break;
             case 2:
@@ -134,11 +151,14 @@ public class ShopManager : MonoBehaviour
                 {
                     playerManag.addDamage(Second_Update_Adds[Second_Update_State]);
                     this.Second_Update_State++;
+                    setTextColorBlack(Second_Text_Money);
                 }
                 else
                 {
+
+                    setTextColorRed(Second_Text_Money);
                     // cant buuy
-                    animtor.SetTrigger("CantBuy");
+                    //animtor.SetTrigger("CantBuy");
                 }
                 break;
 
@@ -147,11 +167,13 @@ public class ShopManager : MonoBehaviour
                 {
                     playerManag.addCadency(Third_Update_Adds[Third_Update_State]);
                     this.Third_Update_State++;
+                    setTextColorBlack(Third_Text_Money);
                 }
                 else
                 {
+                    setTextColorRed(Third_Text_Money);
                     // cant buuy
-                    animtor.SetTrigger("CantBuy");
+                    //animtor.SetTrigger("CantBuy");
                 }
                 break;
 
@@ -163,11 +185,13 @@ public class ShopManager : MonoBehaviour
                     playerManag.addDamage(Fourth_Update_Adds2[Forth_Update_State]);
                     playerManag.addCadency(Fourth_Update_Adds3[Forth_Update_State]);
                     this.Forth_Update_State++;
+                    setTextColorBlack(Fourth_Text_Money);
                 }
                 else
                 {
+                    setTextColorRed(Fourth_Text_Money);
                     // cant buuy
-                    animtor.SetTrigger("CantBuy");
+                    //animtor.SetTrigger("CantBuy");
                 }
 
                 break;
@@ -243,6 +267,35 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    void checkColor()
+    {
+        if (Zero_Update_Cost[Zero_Update_State] <= playerManag.Cash)
+            setTextColorBlack(Zero_Text_Money);
+        else
+            setTextColorRed(Zero_Text_Money);
+
+        if (First_Update_Cost[First_Update_State] <= playerManag.Cash)
+            setTextColorBlack(First_Text_Money);
+        else
+            setTextColorRed(First_Text_Money);
+
+        if (Second_Update_Cost[Second_Update_State] <= playerManag.Cash)
+            setTextColorBlack(Second_Text_Money);
+        else
+            setTextColorRed(Second_Text_Money);
+
+        if (Third_Update_Cost[Third_Update_State] <= playerManag.Cash)
+            setTextColorBlack(Third_Text_Money);
+        else
+            setTextColorRed(Third_Text_Money);
+
+        if (Fourth_Update_Cost[Forth_Update_State] <= playerManag.Cash)
+            setTextColorBlack(Fourth_Text_Money);
+        else
+            setTextColorRed(Fourth_Text_Money);
+
+    }
+
     void Start()
     {
         playerManag = Player.GetComponent<PlayerManager>();
@@ -251,8 +304,12 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
+        checkColor();
 
         setTextinShop();
+
+        Money_in_Shop.text = playerManag.Cash.ToString();
+        
         setDEBUGtext();
     }
 
