@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour {
     private bool reached = false;
     private bool played = false;
 
+    public int life = 100;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour {
 
         if(played == true && gameObject.GetComponent<Animation>().isPlaying == false)
         {
-            Destroy(gameObject);
+            Die();
         }
 	}
 
@@ -58,4 +60,18 @@ public class Enemy : MonoBehaviour {
             reached = true;
         }
     }
+
+    public void GetHit(int damage)
+    {
+        life -= damage;
+
+        if (life <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
 }
