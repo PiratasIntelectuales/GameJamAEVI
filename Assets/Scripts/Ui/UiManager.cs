@@ -7,6 +7,8 @@ public class UiManager : MonoBehaviour {
   //  public GameObject canvas;
     Animator Uianimator;
 
+    public GameObject shopManager;
+
     public float Points; //puntos que tiene el jugador
     public float LimitPoints; // limite de puntos para ganar
 
@@ -21,6 +23,10 @@ public class UiManager : MonoBehaviour {
         {
             GoStopMenu();
         }
+        if (Input.GetKey("l"))
+        {
+            FinishDay();
+        }
         if (LimitPoints==Points) //cuando los puntos iguala o supera pasa a la pantalla de victoria
         {
             Win();
@@ -33,9 +39,17 @@ public class UiManager : MonoBehaviour {
         Application.Quit();
     }
 
+
     public void NextDay()
     {
+        Uianimator.SetBool("Playing", true);
+        Uianimator.SetBool("FinishedDay", false);
+    }
 
+    public void FinishDay()
+    {
+        Uianimator.SetBool("Playing", true);
+        Uianimator.SetBool("FinishedDay", true);
     }
 
     public void Play()
