@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95777391520230778}
   - component: {fileID: 111965062757789414}
   - component: {fileID: 54293355559723572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,6 +236,7 @@ MonoBehaviour:
   maxSpeed: 10
   minSpeed: 5
   deceleration: 4
+  life: 100
 --- !u!136 &136157518239367448
 CapsuleCollider:
   m_ObjectHideFlags: 1

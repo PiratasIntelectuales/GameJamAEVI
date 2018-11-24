@@ -14,6 +14,8 @@ public class PlayerShoot : MonoBehaviour {
     LineRenderer shot;
     public GameObject shot_position;
 
+    public int gun_damage = 40;
+
 	void Start () {
         shot = GetComponent<LineRenderer>();
         shot.enabled = false;
@@ -38,12 +40,7 @@ public class PlayerShoot : MonoBehaviour {
         Debug.Log(transform.forward);
         Debug.DrawLine(transform.position, (transform.position + transform.forward));
 
-        //Shoot
-        //Ray tmp_ray = new Ray(transform.position, transform.forward);
-        //RaycastHit info;
-
-        //Physics.Raycast(tmp_ray, out info, shoot_distance);
-        //info.transform;
+       
 
 
     }
@@ -53,6 +50,17 @@ public class PlayerShoot : MonoBehaviour {
         //Shoot logic
         if (timer >= time_between_shots)
         {
+            //Shoot
+            Ray tmp_ray = new Ray(transform.position, transform.forward);
+            RaycastHit info;
+
+            Physics.Raycast(tmp_ray, out info, shoot_distance, 9); //9 for Enemy
+            
+            if(info.transform)
+            {
+                info.transform.GetComponent<Enemy>().GetHit(gun_damage);
+            }
+
             StartCoroutine("RenderTracer");
             timer = 0.0f;
         }
@@ -66,7 +74,7 @@ public class PlayerShoot : MonoBehaviour {
     {
         shot.enabled = true;
         shot.SetPosition(0, transform.position);
-        shot.SetPosition(1, transform.position + (transform.forward * 10));
+        shot.SetPosition(1, transform.position + (transform.forward * shoot_distance));
         
         yield return null;
         shot.enabled = false;
