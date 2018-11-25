@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour {
 
+
+    private int days;
   //  public GameObject canvas;
     Animator Uianimator;
 
@@ -25,10 +27,7 @@ public class UiManager : MonoBehaviour {
         {
             GoStopMenu();
         }
-        if (Input.GetKey("l")) //Must be deleted
-        {
-            FinishDay();
-        }
+
         if (LimitPoints==Points) //cuando los puntos iguala o supera pasa a la pantalla de victoria
         {
             Win();
