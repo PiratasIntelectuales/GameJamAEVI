@@ -72,15 +72,15 @@ public class Enemy : MonoBehaviour {
             Vector3 targetPos = target.GetComponent<Transform>().position;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
             transform.rotation = Quaternion.LookRotation(targetPos - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -90.0f);
         }
 
         if (reached && played == false)
         {
-            gameObject.GetComponent<Animation>().Play();
             played = true;
         }
 
-        if(played == true && gameObject.GetComponent<Animation>().isPlaying == false)
+        if(played == true)
         {
             Die();
         }
