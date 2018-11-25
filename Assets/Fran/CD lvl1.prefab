@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243910966894034}
   m_LocalRotation: {x: 0, y: 0.33290178, z: 0, w: 0.9429615}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -34.943676, y: 68.1528, z: 302.65323}
   m_LocalScale: {x: 0.13656181, y: 0.1365618, z: 0.1365618}
   m_Children:
   - {fileID: 4755939608297352}
@@ -303,7 +303,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.29, y: 15.35, z: 14.2}
+  m_Size: {x: 12.5, y: 10.93, z: 14.2}
   m_Center: {x: 1.2, y: 5.62, z: -1.54}
 --- !u!95 &95376735003407294
 Animator:
@@ -386,6 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: {fileID: 1772007606580748, guid: 2c5a1a08aea84ab45ad21e0c10ce43b2, type: 2}
+  finalLevelMusic: {fileID: 0}
+  finalLevelFilm: {fileID: 0}
+  finalLevelGame: {fileID: 0}
   timeToGrow: 5
   offset: {x: -1.81, y: 4.13, z: 1.12}
   dropsNeeded: 4
