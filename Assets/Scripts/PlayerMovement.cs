@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed = 0;
+    public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,10 @@ public class PlayerMovement : MonoBehaviour {
         float move_horizontal = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         float move_vertical = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
 
-        if(move_horizontal != 0.0 || move_vertical != 0.0f)
+        if (move_horizontal != 0.0 || move_vertical != 0.0f)
+        {
             transform.Translate(new Vector3(move_horizontal, 0.0f, move_vertical), Space.World);
+            anim.SetBool("Running", true);
+        }else anim.SetBool("Running", false);
     }
 }

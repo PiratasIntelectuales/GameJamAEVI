@@ -18,8 +18,9 @@ public class PlayerShoot : MonoBehaviour {
     public float laser_shoot_distance = 100;
     public float shotgun_shoot_distance = 50;
     LineRenderer shot;
-    public GameObject shot_position;
 
+    public Transform shot_position;
+    public Transform shot_position_shotgun;
     SHOT_TYPE shot_type = SHOT_TYPE.LASER;
     public int laser_gun_damage = 40;
     public int shotgun_damage = 20;
@@ -62,7 +63,7 @@ public class PlayerShoot : MonoBehaviour {
                 if (timer >= laser_time_between_shots)
                 {
                     shot_particles.SetActive(true);
-
+                    
                     Ray tmp_ray = new Ray(transform.position, transform.forward);
                     RaycastHit info;
 
@@ -87,6 +88,7 @@ public class PlayerShoot : MonoBehaviour {
                 if (timer >= shotgun_time_between_shots)
                 {
                     shot_particles.SetActive(true);
+
                     Ray[] shots = new Ray[3];
                     int index = 0;
                     for (float i = -spread_angle_shot; i <= spread_angle_shot; i += spread_angle_shot)
@@ -165,23 +167,23 @@ public class PlayerShoot : MonoBehaviour {
     void LaserRenderTracer()
     {
         shot.enabled = true;
-        shot.SetPosition(0, transform.position);
-        shot.SetPosition(1, transform.position + (transform.forward * laser_shoot_distance));
-        shot.SetPosition(2, transform.position);
-        shot.SetPosition(3, transform.position + (transform.forward * laser_shoot_distance));
-        shot.SetPosition(4, transform.position);
-        shot.SetPosition(5, transform.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(0,shot_position.position);
+        shot.SetPosition(1,shot_position.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(2,shot_position.position);
+        shot.SetPosition(3,shot_position.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(4,shot_position.position);
+        shot.SetPosition(5,shot_position.position + (transform.forward * laser_shoot_distance));
     }
 
     void ShotgunRenderTracer(Ray[] directions)
     {
         shot.enabled = true;
-        shot.SetPosition(0, transform.position);
-        shot.SetPosition(1, transform.position + (directions[0].direction * shotgun_shoot_distance));
-        shot.SetPosition(2, transform.position);
-        shot.SetPosition(3, transform.position + (directions[1].direction * shotgun_shoot_distance));
-        shot.SetPosition(4, transform.position);
-        shot.SetPosition(5, transform.position + (directions[2].direction * shotgun_shoot_distance));        
+        shot.SetPosition(0, shot_position_shotgun.position);
+        shot.SetPosition(1, shot_position_shotgun.position + (directions[0].direction * shotgun_shoot_distance));
+        shot.SetPosition(2, shot_position_shotgun.position);
+        shot.SetPosition(3, shot_position_shotgun.position + (directions[1].direction * shotgun_shoot_distance));
+        shot.SetPosition(4, shot_position_shotgun.position);
+        shot.SetPosition(5, shot_position_shotgun.position + (directions[2].direction * shotgun_shoot_distance));        
     }
 
     void HandleLineRenderer()
