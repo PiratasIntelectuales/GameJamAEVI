@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     public Text Bank;
     [Space]
     [Space]
+
+    public PlayerShoot player;
+
     [Space]
 
     //DEBUG ******************************************************************************************
@@ -66,8 +69,10 @@ public class PlayerManager : MonoBehaviour
         return false;         
     }
 
-    public void addDamage(int damage)
+    public void addDamage(int damage,int damage_shogun)
     {
+        player.laser_gun_damage = damage;
+        player.shotgun_damage = damage_shogun;
         //add damage
     }
     public void addSpeed(float speed)
@@ -83,9 +88,9 @@ public class PlayerManager : MonoBehaviour
         //add damage
     }
 
-    public void addAll(int damage, float speed,float cadency, float improve)
+    public void addAll(int damage, int damage_sg, float speed,float cadency, float improve)
     {
-        addDamage(damage);
+        addDamage(damage, damage_sg);
         addSpeed(speed);
         addCadency(cadency);
         addPlantsImprove(improve);

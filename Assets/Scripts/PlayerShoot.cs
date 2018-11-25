@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public enum SHOT_TYPE
 {
     LASER, 
@@ -29,9 +29,16 @@ public class PlayerShoot : MonoBehaviour {
 
     public GameObject shot_particles;
 
+    //audio
+    public GameObject aManager;
+    public AudioManager aM;
     Plane floor;
-	void Start () {
+
+	void Start ()
+    {
         shot = GetComponent<LineRenderer>();
+        aM = aManager.GetComponent<AudioManager>();
+
         shot.enabled = false;
 
         floor = new Plane(Vector3.up, Vector3.zero);
@@ -61,7 +68,7 @@ public class PlayerShoot : MonoBehaviour {
             case SHOT_TYPE.LASER:
 
                 if (timer >= laser_time_between_shots)
-                {
+                {                 
                     shot_particles.SetActive(true);
                     
                     Ray tmp_ray = new Ray(transform.position, transform.forward);
@@ -73,7 +80,7 @@ public class PlayerShoot : MonoBehaviour {
                     {                       
                         info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
                     }
-
+                    aM.Play("Enemy_Laser_2");
                     LaserRenderTracer();
                     timer = 0.0f;
                 }
@@ -88,6 +95,8 @@ public class PlayerShoot : MonoBehaviour {
                 if (timer >= shotgun_time_between_shots)
                 {
                     shot_particles.SetActive(true);
+
+                   // aM.Play("Enemy_Laser_2");
 
                     Ray[] shots = new Ray[3];
                     int index = 0;
