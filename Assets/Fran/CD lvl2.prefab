@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 54579527265533040}
   m_Layer: 0
   m_Name: CD lvl2
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

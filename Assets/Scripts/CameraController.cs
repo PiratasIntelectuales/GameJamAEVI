@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     public float timeToFade = 2.0f;
-    public GameObject directLight;
-    public float rotSpeed = 1.0f;
-    public float yDayRot = 220.0f;
-    public float yDayNight = 90.0f;
-    public Vector3 dayPos;
-    public Vector3 nightPos;
-    public Vector3 nightRot;
 
-    private float yRot = 0.0f;
-    private int state = 0; //0 orthogonal, 1 perspective
+    public GameObject dayStuff;
+    public GameObject nightStuff;
+    public List<GameObject> dayPots;
+    public List<GameObject> nightPots;
+    public GameObject dayCam;
+    public GameObject nightCam;
+
     private int dayCycle = 0; //0 day, 1 night
     public Texture blackTexture;
     private bool switching = false;
@@ -30,25 +28,25 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        directLight.transform.rotation = Quaternion.Euler(74, yRot, -340);
-        yRot += rotSpeed * Time.deltaTime;
+        //directLight.transform.rotation = Quaternion.Euler(74, yRot, -340);
+        //yRot += rotSpeed * Time.deltaTime;
 
-        if(yRot > yDayNight && yRot < yDayRot && dayCycle == 0)
-        {
-            dayCycle = 1;
-            Switch();
-        }
+        //if(yRot > yDayNight && yRot < yDayRot && dayCycle == 0)
+        //{
+        //    dayCycle = 1;
+        //    Switch();
+        //}
 
-        if(yRot > yDayRot && dayCycle == 1)
-        {
-            dayCycle = 0;
-            Switch();
-        }
+        //if(yRot > yDayRot && dayCycle == 1)
+        //{
+        //    dayCycle = 0;
+        //    Switch();
+        //}
 
-        if(yRot >359.0f)
-        {
-            yRot = 0;
-        }
+        //if(yRot >359.0f)
+        //{
+        //    yRot = 0;
+        //}
         if(Input.GetKeyDown(KeyCode.F) == true)
         {
             Switch();
@@ -72,19 +70,46 @@ public class CameraController : MonoBehaviour {
                 {
                     fadingIn = true;
                     fadingOut = false;
-                    if (state == 0)
+                    if (dayCycle == 0)
                     {
-                        state = 1;
-                        GetComponent<Camera>().orthographic = false;
-                        transform.position = nightPos;
-                        transform.rotation = Quaternion.Euler(nightRot);
+                        dayCycle = 1;
+                        nightCam.SetActive(true);
+                        nightStuff.SetActive(true);
+                        for (int i = 0; i < dayPots.Count; i++)
+                        {
+                            Transform[] tempTrans = dayPots[i].GetComponentsInChildren<Transform>();
+                            foreach (Transform tempPlant in tempTrans)
+                            {
+                                if (tempPlant.gameObject != dayPots[i])
+                                {
+                                    tempPlant.SetParent(nightPots[i].transform, false);
+                                    break;
+                                }
+                            }
+                        }
+                        dayCam.SetActive(false);
+                        dayStuff.SetActive(false);
+                        
                     }
-                    else if (state == 1)
+                    else if (dayCycle == 1)
                     {
-                        state = 0;
-                        GetComponent<Camera>().orthographic = true;
-                        transform.position = dayPos;
-                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                        dayCycle = 0;
+                        dayCam.SetActive(true);
+                        dayStuff.SetActive(true);
+                        for (int i = 0; i < nightPots.Count; i++)
+                        {
+                            Transform[] tempTrans = nightPots[i].GetComponentsInChildren<Transform>();
+                            foreach (Transform tempPlant in tempTrans)
+                            {
+                                if (tempPlant.gameObject != nightPots[i])
+                                {
+                                    tempPlant.SetParent(dayPots[i].transform, false);
+                                    break;
+                                }
+                            }
+                        }
+                        nightCam.SetActive(false);
+                        nightStuff.SetActive(false);
                     }
                 }
                 alphaFadeIn -= Mathf.Clamp01(Time.deltaTime / timeToFade);
