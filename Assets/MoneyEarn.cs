@@ -62,9 +62,36 @@ public class MoneyEarn : MonoBehaviour
 
     void Getnumbers()
     {
-       Movies_Quantity = GameObject.FindGameObjectsWithTag("MaxMovies").Length;
-       CDs_Quantity = GameObject.FindGameObjectsWithTag("MaxMusic").Length;
-       Games_Quantity = GameObject.FindGameObjectsWithTag("MaxGames").Length;
-    }
 
+        GameObject[] GOs1 = GameObject.FindGameObjectsWithTag("MaxMovies");
+        GameObject[] GOs2 = GameObject.FindGameObjectsWithTag("MaxMusic");
+        GameObject[] GOs3 = GameObject.FindGameObjectsWithTag("MaxGames");
+
+        Movies_Quantity = GOs1.Length;
+       CDs_Quantity = GOs2.Length;
+       Games_Quantity = GOs3.Length;
+
+        if(Movies_Quantity>0)
+        {
+            foreach(GameObject i in GOs1)
+            {
+                Destroy(i);
+            }
+        }
+        if (CDs_Quantity > 0)
+        {
+            foreach (GameObject i in GOs2)
+            {
+                Destroy(i);
+            }
+        }
+        if (Games_Quantity > 0)
+        {
+            foreach (GameObject i in GOs3)
+            {
+                Destroy(i);
+            }
+        }
+
+    }
 }
