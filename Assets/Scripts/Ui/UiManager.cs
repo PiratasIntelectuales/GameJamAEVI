@@ -5,8 +5,8 @@ using UnityEngine;
 public class UiManager : MonoBehaviour {
 
 
-    private int days;
-    public int maxDays;
+    private int days=1;
+    public int maxDays =5;
 
   //  public GameObject canvas;
     Animator Uianimator;
@@ -26,11 +26,17 @@ public class UiManager : MonoBehaviour {
     void Update()
     {
         if (Input.GetKey("escape"))
+        {
             GoStopMenu();
-        
+        }
 
-        if (maxDays== days) 
+
+
+        if (maxDays == days)
+        {
             Win();
+        }
+
     }
 
     public void AddDay()
