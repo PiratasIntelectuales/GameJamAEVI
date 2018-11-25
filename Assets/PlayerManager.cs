@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerShoot player;
     public PlayerMovement player_move;
-
+    public MoneyEarn moneyEarnss;
     [Space]
 
     //DEBUG ******************************************************************************************
@@ -33,10 +33,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //DEBUG ************************************************************************
-
-
-
-
+    
 
     void ReText(int Cash, Text text)
     {
@@ -96,9 +93,10 @@ public class PlayerManager : MonoBehaviour
             player.shotgun_time_between_shots = 0.15f;
         }
     }
+
     public void addPlantsImprove(float improve)
     {
-        //add damage
+        moneyEarnss.multiplier += improve; //cambiar mejoras desde el inspector
     }
 
     public void addAll(int damage, int damage_sg, float speed,float cadency, float cadency_shotgun, float improve)
