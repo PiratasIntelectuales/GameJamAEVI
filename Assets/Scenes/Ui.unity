@@ -5449,14 +5449,14 @@ MonoBehaviour:
   Second_Text_sg: {fileID: 1321516477}
   Second_Text_Money: {fileID: 665835493}
   Third_Text: {fileID: 1498378646}
-  Third_Text_shotgun: {fileID: 0}
+  Third_Text_shotgun: {fileID: 1321516477}
   Third_Text_Money: {fileID: 1480391441}
   Fourth_Text_0: {fileID: 1835671533}
   Fourth_Text_1: {fileID: 1338679454}
   Fourth_Text_2: {fileID: 1151420203}
   Fourth_Text_2_sg: {fileID: 133600810}
   Fourth_Text_3: {fileID: 517271138}
-  Fourth_Text_3_shotgun: {fileID: 0}
+  Fourth_Text_3_shotgun: {fileID: 2065436540}
   Fourth_Text_Money: {fileID: 1019831943}
   Zero_Text_debug: {fileID: 372106627}
   First_Text_debug: {fileID: 258553962}
@@ -10695,6 +10695,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Enemy_dead_1
     clip: {fileID: 8300000, guid: f039a956961bd5d4eb0f00347e5ad5dd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cubo_Agua
+    clip: {fileID: 8300000, guid: 8a28b06893920634495311e7fbec6546, type: 3}
     volume: 1
     pitch: 1
     loop: 0
