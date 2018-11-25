@@ -69,6 +69,7 @@ void Update ()
             {
                 Destroy(spawn_particle_system);
                 skinner.enabled = true;
+                FindObjectOfType<AudioManager>().PlayRandAudio2("Mio_4", "Mio_1", "Mio_2", "Mio_3");
             }
             else particle_timer += Time.deltaTime;
 
@@ -129,12 +130,15 @@ void Update ()
     {
         life -= damage;
 
+        FindObjectOfType<AudioManager>().Play("Enemy_Hit_1");
+
         if (life <= 0 && dying == false)
         {
             dying = true;
             die_particle_system = Instantiate(die_particles, transform);
             die_particle_system.SetActive(true);
             GetComponent<Animator>().SetBool("Dying", true);
+            FindObjectOfType<AudioManager>().Play("Enemy_dead_1");
         }
     }
 
