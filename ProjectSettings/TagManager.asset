@@ -13,6 +13,7 @@ TagManager:
   - Tear
   - Well
   - Bucket
+  - TearFloor
   layers:
   - Default
   - TransparentFX
