@@ -7,7 +7,7 @@ public class Pot : MonoBehaviour {
 
     public Vector3 offsetmusicLvl1;
 
-    private bool planted = false;
+    public bool planted = false;
 	// Use this for initialization
 	void Start () {
 		

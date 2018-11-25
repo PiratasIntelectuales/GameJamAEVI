@@ -149,6 +149,7 @@ public class CameraController : MonoBehaviour {
                             {
                                 if (tempPlant.gameObject != dayPots[i])
                                 {
+                                    dayPots[i].GetComponent<Pot>().planted = false;
                                     tempPlant.SetParent(nightPots[i].transform, false);
                                     break;
                                 }

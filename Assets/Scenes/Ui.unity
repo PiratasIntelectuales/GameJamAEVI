@@ -41515,7 +41515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf7d8f1a22d439458ea8b46188ca4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicprice: 0
+  basicprice: 200
   CDs_Price: 0
   Movies_Price: 0
   Games_Price: 0
