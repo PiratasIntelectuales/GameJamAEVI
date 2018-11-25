@@ -13,12 +13,16 @@ public class Enemy : MonoBehaviour {
     private bool played = false;
 
     public int life = 100;
+    public float timeToDie = 3.0f;
 
     bool particle_spawn_activated = true;
     float particle_timer = 0.0f;
     public GameObject prefab_spawn_particle_system;
     GameObject spawn_particle_system;
     public SkinnedMeshRenderer skinner;
+    public GameObject die_particles;
+    private float dieTimer = 0.0f;
+    private bool dying = false;
 
     // Use this for initialization
     void Start ()
@@ -54,6 +58,16 @@ void Update ()
             return;
         }
 
+        if(dying)
+        {
+            dieTimer += Time.deltaTime;
+            if(dieTimer>=timeToDie)
+            {
+                Die();
+            }
+            return;
+        }
+
         //Spawn enemy
 		if(!reached)
         {
@@ -77,9 +91,12 @@ void Update ()
             played = true;
         }
 
-        if(played == true)
+        if(played == true || Input.GetKeyDown(KeyCode.T) == true)
         {
-            Die();
+            reached = true;
+            dying = true;
+            die_particles.SetActive(true);
+            GetComponent<Animator>().SetBool("Dying", true);
         }
 	}
 
@@ -96,7 +113,9 @@ void Update ()
         life -= damage;
 
         if (life <= 0)
-            Die();
+            dying = true;
+            die_particles.SetActive(true);
+        GetComponent<Animator>().SetBool("Dying", true);
     }
 
     void Die()
