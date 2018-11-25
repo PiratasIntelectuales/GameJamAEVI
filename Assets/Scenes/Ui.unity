@@ -11180,7 +11180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &628649311
 Transform:
   m_ObjectHideFlags: 0
@@ -15891,14 +15891,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033b1c9af43f53f42ab734da14584b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser_time_between_shots: 0.2
-  shotgun_time_between_shots: 0.7
+  laser_time_between_shots: 0.15
+  shotgun_time_between_shots: 0.5
   laser_shoot_distance: 500
   shotgun_shoot_distance: 150
   shot_position: {fileID: 2104197194}
   shot_position_shotgun: {fileID: 1617585721}
-  laser_gun_damage: 35
-  shotgun_damage: 32
+  laser_gun_damage: 50
+  shotgun_damage: 150
   spread_angle_shot: 15
   cam: {fileID: 2013151866}
   shot_particles: {fileID: 1403165921}
@@ -24491,8 +24491,8 @@ MonoBehaviour:
   nightCam: {fileID: 2013151864}
   blackTexture: {fileID: 2800000, guid: ffbe16bef9e09e34687297794a78c313, type: 3}
   start_counting: 0
-  day_time_duration: 10
-  night_time_duration: 200
+  day_time_duration: 90
+  night_time_duration: 180
   player_pj: {fileID: 890398868}
   ui_manager: {fileID: 1067424240}
 --- !u!4 &1358079632 stripped
@@ -25213,14 +25213,14 @@ MonoBehaviour:
   - {fileID: 1783066562719452, guid: dc16f31294674ab4681f5484527c6eaa, type: 2}
   - {fileID: 1689444090063666, guid: f0618f5237e71c54b9f1fc130c8f7c70, type: 2}
   - {fileID: 1994741525950146, guid: 04bda8dfefd59874a8efbd34e0ea297e, type: 2}
-  timeToSpawnPhase1: 2.5
+  timeToSpawnPhase1: 3
   timeToSpawnPhase2: 2.5
-  timeToSpawnPhase3: 1.5
-  timeToSpawnPhase4: 1
-  tPhase1: 30
-  tPhase2: 30
-  tPhase3: 30
-  tPhase4: 20
+  timeToSpawnPhase3: 2
+  timeToSpawnPhase4: 1.75
+  tPhase1: 20
+  tPhase2: 40
+  tPhase3: 60
+  tPhase4: 180
 --- !u!4 &1387676543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: b88984a1b69457e46bd709c80bfe3cb5,
@@ -30457,7 +30457,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65598811087464790, guid: 12c762929cd3281488d2f2be0c3fa99c, type: 2}
+    - {fileID: 54961642334604358, guid: 12c762929cd3281488d2f2be0c3fa99c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 12c762929cd3281488d2f2be0c3fa99c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1453022021

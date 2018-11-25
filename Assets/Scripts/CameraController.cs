@@ -67,8 +67,25 @@ public class CameraController : MonoBehaviour {
                 }
             }
 
-            if (dayCycle == 1)//day
+            if (dayCycle == 1)//night
             {
+                bool success = false;
+                for (int i = 0; i < nightPots.Count; i++)
+                {
+                    Transform[] tempTrans = nightPots[i].GetComponentsInChildren<Transform>();
+                    foreach(Transform plant in tempTrans)
+                    {
+                        if (plant.gameObject.CompareTag("Pot") == false)
+                        {
+                            success = true;
+                            break;
+                        }
+                    }
+                }
+                if(success == false)
+                {
+                    ui_manager.Lose();
+                }
                 if (day_night_timer >= night_time_duration)
                 {
                     //Activate Shop menu

@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
     private bool reached = false;
     private bool played = false;
 
-    public int life = 100;
+    public int life = 1;
     public float timeToDie = 3.0f;
 
     bool particle_spawn_activated = true;
@@ -33,7 +33,11 @@ public class Enemy : MonoBehaviour {
         GameObject[] tempMusic = GameObject.FindGameObjectsWithTag("MaxMusic");
         GameObject[] tempGames = GameObject.FindGameObjectsWithTag("MaxGames");
         List<GameObject> tempList = new List<GameObject>();
-        foreach(GameObject plant in tempMovies)
+        foreach (GameObject plant in temp)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempMovies)
         {
             tempList.Add(plant);
         }
@@ -56,12 +60,17 @@ public class Enemy : MonoBehaviour {
         spawn_particle_system = Instantiate(prefab_spawn_particle_system, transform);
         spawn_particle_system.SetActive(true);
         skinner.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
 
-}
+    }
 
 // Update is called once per frame
 void Update ()
     {
+        if(target == null && reached == false)
+        {
+            Retarget();
+        }
         //particle spawn
         if(spawn_particle_system != null)
         {
@@ -70,6 +79,7 @@ void Update ()
                 Destroy(spawn_particle_system);
                 skinner.enabled = true;
                 FindObjectOfType<AudioManager>().PlayRandAudio2("Mio_4", "Mio_1", "Mio_2", "Mio_3");
+                GetComponent<BoxCollider>().enabled = true;
             }
             else particle_timer += Time.deltaTime;
 
@@ -115,14 +125,17 @@ void Update ()
             die_particle_system = Instantiate(die_particles, transform);
             die_particle_system.SetActive(true);
             GetComponent<Animator>().SetBool("Dying", true);
+            GetComponent<BoxCollider>().enabled = false;
+            skinner.enabled = false;
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Plant") == true)
+        if(other.gameObject.CompareTag("Plant") == true || other.gameObject.CompareTag("MaxMovies") == true || other.gameObject.CompareTag("MaxMusic") == true || other.gameObject.CompareTag("MaxGames") == true)
         {
             reached = true;
+            Destroy(other.gameObject);
         }
     }
 
@@ -139,12 +152,41 @@ void Update ()
             die_particle_system.SetActive(true);
             GetComponent<Animator>().SetBool("Dying", true);
             FindObjectOfType<AudioManager>().Play("Enemy_dead_1");
+            GetComponent<BoxCollider>().enabled = false;
+            skinner.enabled = false;
         }
     }
 
     void Die()
     {
         Destroy(gameObject);
+    }
+
+    void Retarget()
+    {
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Plant");
+        GameObject[] tempMovies = GameObject.FindGameObjectsWithTag("MaxMovies");
+        GameObject[] tempMusic = GameObject.FindGameObjectsWithTag("MaxMusic");
+        GameObject[] tempGames = GameObject.FindGameObjectsWithTag("MaxGames");
+        List<GameObject> tempList = new List<GameObject>();
+        foreach (GameObject plant in temp)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempMovies)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempMusic)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempGames)
+        {
+            tempList.Add(plant);
+        }
+        target = tempList[Random.Range(0, tempList.Count)];
+        speed = maxSpeed;
     }
 
 }
