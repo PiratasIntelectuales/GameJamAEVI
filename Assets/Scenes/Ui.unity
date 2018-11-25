@@ -5353,7 +5353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &386339496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10677,20 +10677,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Gota_Maceta
     clip: {fileID: 8300000, guid: 665ba7711f32a724a8108c00b0514b2c, type: 3}
-    volume: 1
+    volume: 0.79
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Enemy_Laser_1
     clip: {fileID: 8300000, guid: 9462b49458e7fb64b9ac601f3059fedd, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Enemy_Laser_2
     clip: {fileID: 8300000, guid: 4160ac7d9263b904e96a17c2750d3975, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.58
     loop: 0
     source: {fileID: 0}
   - name: Enemy_dead_1
@@ -10702,6 +10702,60 @@ MonoBehaviour:
   - name: Cubo_Agua
     clip: {fileID: 8300000, guid: 8a28b06893920634495311e7fbec6546, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bso_1
+    clip: {fileID: 8300000, guid: 972fbff1af23c314985068194fa2b924, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: bso_2
+    clip: {fileID: 8300000, guid: 7f96d0a41fe35834b91c1b1361e0fb67, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Mio_1
+    clip: {fileID: 8300000, guid: b28d1c0c9defeb34698a0cca9235d68a, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mio_2
+    clip: {fileID: 8300000, guid: 97c44f9821e1ff54f85c9572e4a1acd2, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mio_3
+    clip: {fileID: 8300000, guid: 08daa6d3f5999f2429f003f9e3fad163, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mio_4
+    clip: {fileID: 8300000, guid: 66f0172d3ccc2f449bc0d08c1c1830e1, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gota_1
+    clip: {fileID: 8300000, guid: 8f80b50c4ecf72f4ebf59922a6bf89b8, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gota_2
+    clip: {fileID: 8300000, guid: a1ef3bd7a16352444adb9d865ded99b3, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gota_3
+    clip: {fileID: 8300000, guid: bc1873d91458984478a9410ceaed86fe, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -15620,7 +15674,7 @@ Prefab:
     - target: {fileID: 114515857931612472, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
         type: 2}
       propertyPath: spread_angle_shot
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114515857931612472, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
         type: 2}
@@ -15684,7 +15738,7 @@ Prefab:
     - target: {fileID: 114515857931612472, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
         type: 2}
       propertyPath: shotgun_shoot_distance
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bebcf9e8a50b7849bea7c7e8c31453b, type: 2}
@@ -18176,8 +18230,8 @@ MonoBehaviour:
   nightCam: {fileID: 2013151864}
   blackTexture: {fileID: 2800000, guid: ffbe16bef9e09e34687297794a78c313, type: 3}
   start_counting: 0
-  day_time_duration: 2
-  night_time_duration: 2
+  day_time_duration: 10
+  night_time_duration: 200
   player_pj: {fileID: 890398868}
   ui_manager: {fileID: 1067424240}
 --- !u!1 &1356891336
@@ -20817,7 +20871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1602557970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24196,6 +24250,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 782479919}
+        m_MethodName: changeBSO
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -60,8 +60,10 @@ public class CameraController : MonoBehaviour {
             {
                 if (day_night_timer >= day_time_duration)
                 {
+
                     Switch();
 
+                    FindObjectOfType<AudioManager>().changeBSO(0);
                 }
             }
 

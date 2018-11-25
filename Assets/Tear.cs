@@ -24,6 +24,6 @@ public class Tear : MonoBehaviour {
 
     private void OnDestroy()
     {
-        FindObjectOfType<AudioManager>().Play("Gota_Maceta");
+      FindObjectOfType<AudioManager>().PlayRandAudio("Gota_1", "Gota_2", "Gota_3");
     }
 }
