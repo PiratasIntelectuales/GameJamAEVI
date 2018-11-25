@@ -9161,6 +9161,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 110.85
       objectReference: {fileID: 0}
+    - target: {fileID: 4997650157100434, guid: 3e5c2667ff1e754469eb11f7a7595565, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5c2667ff1e754469eb11f7a7595565, type: 2}
   m_IsPrefabAsset: 0
@@ -30148,6 +30152,12 @@ Prefab:
       propertyPath: m_TagString
       value: GameBag
       objectReference: {fileID: 0}
+    - target: {fileID: 114029232971817226, guid: 3ed9d8c2738e69a4498d6f3a7a5973cf,
+        type: 2}
+      propertyPath: seed
+      value: 
+      objectReference: {fileID: 1647778697149230, guid: 80d6dae7b785b0640a7f8753d8c9a014,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ed9d8c2738e69a4498d6f3a7a5973cf, type: 2}
   m_IsPrefabAsset: 0
@@ -30910,6 +30920,12 @@ Prefab:
       propertyPath: m_TagString
       value: FilmBag
       objectReference: {fileID: 0}
+    - target: {fileID: 114029232971817226, guid: 3ed9d8c2738e69a4498d6f3a7a5973cf,
+        type: 2}
+      propertyPath: seed
+      value: 
+      objectReference: {fileID: 1044483379998620, guid: b64070b0cd6b833408a4d723fe2c9513,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ed9d8c2738e69a4498d6f3a7a5973cf, type: 2}
   m_IsPrefabAsset: 0
@@ -40317,7 +40333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &2013151865
 AudioListener:
   m_ObjectHideFlags: 0

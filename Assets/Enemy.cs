@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour {
     float particle_timer = 0.0f;
     public GameObject prefab_spawn_particle_system;
     GameObject spawn_particle_system;
+    GameObject die_particle_system;
     public SkinnedMeshRenderer skinner;
     public GameObject die_particles;
     private float dieTimer = 0.0f;
@@ -107,11 +108,11 @@ void Update ()
             played = true;
         }
 
-        if(played == true || Input.GetKeyDown(KeyCode.T) == true)
+        if(played == true)
         {
-            reached = true;
             dying = true;
-            die_particles.SetActive(true);
+            die_particle_system = Instantiate(die_particles, transform);
+            die_particle_system.SetActive(true);
             GetComponent<Animator>().SetBool("Dying", true);
         }
 	}
@@ -128,10 +129,13 @@ void Update ()
     {
         life -= damage;
 
-        if (life <= 0)
+        if (life <= 0 && dying == false)
+        {
             dying = true;
-            die_particles.SetActive(true);
-        GetComponent<Animator>().SetBool("Dying", true);
+            die_particle_system = Instantiate(die_particles, transform);
+            die_particle_system.SetActive(true);
+            GetComponent<Animator>().SetBool("Dying", true);
+        }
     }
 
     void Die()

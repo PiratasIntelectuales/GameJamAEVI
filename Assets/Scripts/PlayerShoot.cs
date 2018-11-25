@@ -98,7 +98,7 @@ public class PlayerShoot : MonoBehaviour {
                     Ray tmp_ray = new Ray(shot_position.position, transform.forward);
                     RaycastHit info;
 
-                    Physics.Raycast(tmp_ray, out info, laser_shoot_distance, 9); //9 for Enemy
+                    Physics.Raycast(tmp_ray, out info, laser_shoot_distance); //9 for Enemy
 
                     if (info.transform)
                     {
@@ -140,7 +140,7 @@ public class PlayerShoot : MonoBehaviour {
                     foreach (Ray ray in shots)
                     {
                         RaycastHit info;
-                        Physics.Raycast(ray, out info, shotgun_shoot_distance, 9);
+                        Physics.Raycast(ray, out info, shotgun_shoot_distance);
                         if (info.transform)
                         {
                             if (info.transform.gameObject.layer == 9)
