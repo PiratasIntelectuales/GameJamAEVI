@@ -13,20 +13,26 @@ public class ShopManager : MonoBehaviour
     Animator animtor;
 
     public Text Money_in_Shop;
+    [Header("Speed")]
+    //deww
 
     [Space]// speed
     public float[] Zero_Update_Adds; // que bonus le añade al jugador
     public int[] Zero_Update_Cost; // cuanto cuesta cada una de las updates
     [Space]//plants
+    [Header("plants")]
     public float[] First_Update_Adds; // que bonus le añade al jugador
     public int[] First_Update_Cost; // cuanto cuesta cada una de las updates
     [Space]//damage
+    [Header("damage")]
     public int[] Second_Update_Adds;
     public int[] Second_Update_Cost;
     [Space]//gun speed
+    [Header("gun speed")]
     public float[] Third_Update_Adds;
     public int[] Third_Update_Cost;
     [Space]//all
+    [Header("all")]
     public float[] Fourth_Update_Adds0;  // que bonus le añade al jugador del Zero
     public float[] Fourth_Update_Adds1;  // que bonus le añade al jugador del first
     public int[] Fourth_Update_Adds2;// que bonus le añade al jugador del Second

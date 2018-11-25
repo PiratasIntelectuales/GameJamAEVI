@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20467177, g: 0.17915612, b: 0.13094482, a: 1}
+  m_IndirectSpecularColor: {r: 0.2046712, g: 0.17915589, b: 0.1309447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2301,38 +2301,38 @@ MonoBehaviour:
   - 0.2
   - 0.5
   - 0.3
-  Zero_Update_Cost: 32000000c80000005e010000dc050000
+  Zero_Update_Cost: c2010000cb020000f203000040060000
   First_Update_Adds:
   - 1.2
-  - 1.3
-  - 1.5
-  - 1.8
-  First_Update_Cost: 320000009600000090010000e8030000
-  Second_Update_Adds: 0a0000000f000000140000001e000000
-  Second_Update_Cost: 640000002c010000bc020000dc050000
+  - 1.7
+  - 2.4
+  - 3.4
+  First_Update_Cost: 26020000ca030000f005000080070000
+  Second_Update_Adds: 2e000000450000005b0000006b000000
+  Second_Update_Cost: d5020000fc0300003c05000036060000
   Third_Update_Adds:
   - 1.5
   - 1.7
   - 2
   - 3.5
-  Third_Update_Cost: 7d000000f4010000dc05000088130000
+  Third_Update_Cost: b7020000e8030000be050000ae060000
   Fourth_Update_Adds0:
   - 0.05
   - 0.05
   - 0.1
   - 0.15
   Fourth_Update_Adds1:
-  - 0.4
-  - 0.42
-  - 0.5
-  - 0.55
-  Fourth_Update_Adds2: 03000000050000000600000009000000
+  - 0.2
+  - 0.35
+  - 0.35
+  - 0.25
+  Fourth_Update_Adds2: 0700000009000000090000000c000000
   Fourth_Update_Adds3:
-  - 0.7
-  - 0.8
-  - 1
-  - 1.1
-  Fourth_Update_Cost: 2c01000084030000c409000070170000
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  Fourth_Update_Cost: 84030000280500007206000007080000
   Zero_Text: {fileID: 1317870621}
   Zero_Text_Money: {fileID: 2110126438}
   First_Text: {fileID: 181459677}
