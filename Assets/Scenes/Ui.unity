@@ -13704,7 +13704,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Enemy_Laser_2
-    clip: {fileID: 8300000, guid: 4160ac7d9263b904e96a17c2750d3975, type: 3}
+    clip: {fileID: 8300000, guid: 3351a88ca875bd74998c5a9dafc22109, type: 3}
     volume: 1
     pitch: 1.58
     loop: 0
