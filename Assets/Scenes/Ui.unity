@@ -13995,6 +13995,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Cambio_Gun
+    clip: {fileID: 8300000, guid: 75db04a4dc94a704689c5c2d0bc47a77, type: 3}
+    volume: 0.359
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &782479920
 Transform:
   m_ObjectHideFlags: 0
@@ -19625,6 +19631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60363f72d9e3a754bab9071f1b2ff086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDays: 0
   shopManager: {fileID: 386339495}
   Points: 0
   LimitPoints: 1000

@@ -202,7 +202,8 @@ public class PlayerShoot : MonoBehaviour {
             if (shot_type == SHOT_TYPE.LASER)
                 shot_type = SHOT_TYPE.SHOTGUN;
             else shot_type = SHOT_TYPE.LASER;
-            
+
+            FindObjectOfType<AudioManager>().Play("Cambio_Gun");
         }
 
     }
