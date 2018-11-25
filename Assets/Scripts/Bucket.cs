@@ -11,6 +11,7 @@ public class Bucket : MonoBehaviour {
     private float quantity = 0.0f;
     private float timer = 0.0f;
     private float deplete = 0.0f;
+    private GameObject colliding;
 	// Use this for initialization
 	void Start () {
 		
@@ -36,10 +37,27 @@ public class Bucket : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Well"))
+        {
+            FindObjectOfType<AudioManager>().Play("Cubo_Agua");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
         if(other.gameObject.CompareTag("Well"))
         {
             quantity = maxQuantity;
             deplete = depletionRate;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Well") == false && colliding != collision.gameObject)
+        {
+            colliding = collision.gameObject;
+            FindObjectOfType<AudioManager>().Play("Cubo_Agua_Suelo");
         }
     }
 

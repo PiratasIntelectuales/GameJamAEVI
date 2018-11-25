@@ -21,4 +21,9 @@ public class Tear : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<AudioManager>().Play("Gota_Maceta");
+    }
 }
