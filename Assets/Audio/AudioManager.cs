@@ -50,4 +50,4 @@ public class AudioManager : MonoBehaviour
 }
 
 
-//FindObjectType<AudioManager>().Play("audio para reproducir");
+//FindObjectOfType<AudioManager>().Play("audio para reproducir");

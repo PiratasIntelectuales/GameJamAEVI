@@ -325,9 +325,11 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
+        setTextinShop();
+
         checkColor();
 
-        setTextinShop();
+      
 
         Money_in_Shop.text = playerManag.Cash.ToString();
         
