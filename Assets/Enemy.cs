@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
     float particle_timer = 0.0f;
     public GameObject prefab_spawn_particle_system;
     GameObject spawn_particle_system;
+    public SkinnedMeshRenderer skinner;
 
     // Use this for initialization
     void Start ()
@@ -33,16 +34,12 @@ public class Enemy : MonoBehaviour {
     {
         spawn_particle_system = Instantiate(prefab_spawn_particle_system, transform);
         spawn_particle_system.SetActive(true);
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponentInChildren<MeshRenderer>();
-        foreach(MeshRenderer comp in GetComponentsInChildren<MeshRenderer>())
-        {
-            comp.enabled = false;
-        }
-    }
+        skinner.enabled = false;
 
-    // Update is called once per frame
-    void Update ()
+}
+
+// Update is called once per frame
+void Update ()
     {
         //particle spawn
         if(spawn_particle_system != null)
@@ -50,7 +47,7 @@ public class Enemy : MonoBehaviour {
             if (particle_timer >= 3.0)
             {
                 Destroy(spawn_particle_system);
-                GetComponent<MeshRenderer>().enabled = true;
+                skinner.enabled = true;
             }
             else particle_timer += Time.deltaTime;
 

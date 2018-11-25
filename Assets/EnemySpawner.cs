@@ -33,39 +33,39 @@ public class EnemySpawner : MonoBehaviour {
         timerGlobal += Time.deltaTime;
         if(timerGlobal < tPhase1)
         {
-            if(timerSpawn > timeToSpawnPhase1)
+            if(timerSpawn > timeToSpawnPhase1 && enemyPrefabsPhase1.Count != 0)
             {
-                int rand = Random.Range(0, enemyPrefabsPhase1.Count);
+                int rand = Random.Range(0, enemyPrefabsPhase1.Count-1);
                 Instantiate(enemyPrefabsPhase1[rand]);
                 timerSpawn = 0.0f;
             }
         }
 
-        else if (timerGlobal < tPhase2)
+        else if (timerGlobal < tPhase2 && enemyPrefabsPhase2.Count != 0)
         {
             if (timerSpawn > timeToSpawnPhase2)
             {
-                int rand = Random.Range(0, enemyPrefabsPhase2.Count);
+                int rand = Random.Range(0, enemyPrefabsPhase2.Count-1);
                 Instantiate(enemyPrefabsPhase2[rand]);
                 timerSpawn = 0.0f;
             }
         }
 
-        else if (timerGlobal < tPhase3)
+        else if (timerGlobal < tPhase3 && enemyPrefabsPhase3.Count != 0)
         {
             if (timerSpawn > timeToSpawnPhase3)
             {
-                int rand = Random.Range(0, enemyPrefabsPhase3.Count);
+                int rand = Random.Range(0, enemyPrefabsPhase3.Count-1);
                 Instantiate(enemyPrefabsPhase3[rand]);
                 timerSpawn = 0.0f;
             }
         }
 
-        else if (timerGlobal < tPhase4)
+        else if (timerGlobal < tPhase4 && enemyPrefabsPhase4.Count != 0)
         {
             if (timerSpawn > timeToSpawnPhase4)
             {
-                int rand = Random.Range(0, enemyPrefabsPhase4.Count);
+                int rand = Random.Range(0, enemyPrefabsPhase4.Count-1);
                 Instantiate(enemyPrefabsPhase4[rand]);
                 timerSpawn = 0.0f;
             }

@@ -1074,11 +1074,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2d4c1b4417e624cb5124640f18fa6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 40
   minSpeed: 5
   deceleration: 4
   life: 100
-  prefab_spawn_particle_system: {fileID: 0}
+  prefab_spawn_particle_system: {fileID: 1591659697369156, guid: 3c626d1292f3f694b9a596d897b0a3d3,
+    type: 2}
+  skinner: {fileID: 137067631023377982}
 --- !u!137 &137067631023377982
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
