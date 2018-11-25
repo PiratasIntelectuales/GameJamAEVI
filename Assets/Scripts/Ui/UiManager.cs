@@ -6,6 +6,8 @@ public class UiManager : MonoBehaviour {
 
 
     private int days;
+    public int maxDays;
+
   //  public GameObject canvas;
     Animator Uianimator;
 
@@ -24,16 +26,18 @@ public class UiManager : MonoBehaviour {
     void Update()
     {
         if (Input.GetKey("escape"))
-        {
             GoStopMenu();
-        }
+        
 
-        if (LimitPoints==Points) //cuando los puntos iguala o supera pasa a la pantalla de victoria
-        {
+        if (maxDays== days) 
             Win();
-        }
-
     }
+
+    public void AddDay()
+    {
+        days++;
+    }
+
    public void PushQuit()
     {
         Uianimator.SetBool("ToQuit", true);
