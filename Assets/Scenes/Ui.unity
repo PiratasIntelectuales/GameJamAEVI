@@ -33546,8 +33546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 890398868}
-  top_left: {x: 545.9, y: -185}
-  bottom_right: {x: 750, y: -309.4}
+  top_left: {x: 557, y: 372}
+  bottom_right: {x: 684, y: 245}
 --- !u!1 &2013844695 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 116276, guid: 689a36ce1e8152f488b3a0d5fc644805,

@@ -42,7 +42,7 @@ public class CameraMove : MonoBehaviour {
         if (smooth_pos.x <= top_left.x || smooth_pos.x >= bottom_right.x)
             smooth_pos.x = transform.position.x;
 
-        if (smooth_pos.z <= top_left.y || smooth_pos.z >= bottom_right.y)
+        if (smooth_pos.z >= top_left.y || smooth_pos.z <= bottom_right.y)
             smooth_pos.z = transform.position.z;
 
         
