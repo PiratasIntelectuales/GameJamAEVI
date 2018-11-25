@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     [Space]
 
     public PlayerShoot player;
+    public PlayerMovement player_move;
 
     [Space]
 
@@ -71,28 +72,32 @@ public class PlayerManager : MonoBehaviour
 
     public void addDamage(int damage,int damage_shogun)
     {
-        player.laser_gun_damage = damage;
-        player.shotgun_damage = damage_shogun;
+        player.laser_gun_damage += damage;
+        player.shotgun_damage += damage_shogun;
         //add damage
     }
     public void addSpeed(float speed)
     {
-        //add damage
+        if ((player_move.speed + speed) < 130)
+            player_move.speed += speed;
+        else player_move.speed = 130;
     }
-    public void addCadency(float cadency)
+    public void addCadency(float cadency, float candency_shotgun)
     {
         //add damage
+        player.laser_time_between_shots -= cadency;
+        player.shotgun_time_between_shots -= candency_shotgun;
     }
     public void addPlantsImprove(float improve)
     {
         //add damage
     }
 
-    public void addAll(int damage, int damage_sg, float speed,float cadency, float improve)
+    public void addAll(int damage, int damage_sg, float speed,float cadency, float cadency_shotgun, float improve)
     {
         addDamage(damage, damage_sg);
         addSpeed(speed);
-        addCadency(cadency);
+        addCadency(cadency, cadency_shotgun);
         addPlantsImprove(improve);
     }
 

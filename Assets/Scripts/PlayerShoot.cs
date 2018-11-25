@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviour {
 
     public float laser_shoot_distance = 100;
     public float shotgun_shoot_distance = 50;
-    LineRenderer shot;
+    LineRenderer shot = null;
 
     public Transform shot_position;
     public Transform shot_position_shotgun;
@@ -30,22 +30,46 @@ public class PlayerShoot : MonoBehaviour {
     public GameObject shot_particles;
 
     //audio
-    public GameObject aManager;
-    public AudioManager aM;
+    AudioManager aM = null;
     Plane floor;
 
 	void Start ()
     {
-        shot = GetComponent<LineRenderer>();
-        aM = aManager.GetComponent<AudioManager>();
+        Debug.Log("POLAYER START");
+        if (shot == null)
+        {
+            shot = GetComponent<LineRenderer>();
+            shot.enabled = false;
+        }
 
-        shot.enabled = false;
+        if (aM == null)
+        {
+            aM = FindObjectOfType<AudioManager>();
+        }
 
         floor = new Plane(Vector3.up, Vector3.zero);
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    public void SetPlayer()
+    {
+        Debug.Log("OSTIAS YA 1");
+        if (shot == null)
+        {
+            shot = GetComponent<LineRenderer>();
+            shot.enabled = false;
+        } 
+    
+        if(aM == null)
+        {
+            Debug.Log("OSTIAS YA 2");
+            aM = FindObjectOfType<AudioManager>();
+        }
+
+        floor = new Plane(Vector3.up, Vector3.zero);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         //Line renderer shut down
         HandleLineRenderer();
@@ -71,7 +95,7 @@ public class PlayerShoot : MonoBehaviour {
                 {                 
                     shot_particles.SetActive(true);
                     
-                    Ray tmp_ray = new Ray(transform.position, transform.forward);
+                    Ray tmp_ray = new Ray(shot_position.position, transform.forward);
                     RaycastHit info;
 
                     Physics.Raycast(tmp_ray, out info, laser_shoot_distance, 9); //9 for Enemy
@@ -80,7 +104,7 @@ public class PlayerShoot : MonoBehaviour {
                     {                       
                         info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
                     }
-                    aM.Play("Enemy_Laser_2");
+                    aM.Play("Enemy_Laser_1");
                     LaserRenderTracer();
                     timer = 0.0f;
                 }
@@ -96,7 +120,7 @@ public class PlayerShoot : MonoBehaviour {
                 {
                     shot_particles.SetActive(true);
 
-                   // aM.Play("Enemy_Laser_2");
+                    aM.Play("Enemy_Laser_2");
 
                     Ray[] shots = new Ray[3];
                     int index = 0;
@@ -105,7 +129,7 @@ public class PlayerShoot : MonoBehaviour {
                         Debug.Log(i);
                         Quaternion rotation = Quaternion.Euler(new Vector3(0.0f, i, 0.0f));
                         Vector3 shot_dir = rotation * transform.forward;
-                        shots[index] = new Ray(transform.position, shot_dir);
+                        shots[index] = new Ray(shot_position_shotgun.position, shot_dir);
                         index++;
                     }
 

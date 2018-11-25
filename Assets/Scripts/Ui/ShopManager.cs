@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
     [Space]//gun speed
     [Header("gun speed")]
     public float[] Third_Update_Adds;
+    public float[] Third_Update_Adds_shotgun;
     public int[] Third_Update_Cost;
     [Space]//all
     [Header("all")]
@@ -39,6 +40,7 @@ public class ShopManager : MonoBehaviour
     public int[] Fourth_Update_Adds2;// que bonus le añade al jugador del Second
     public int[] Fourth_Update_Adds2_shotgun;// que bonus le añade al jugador del Second
     public float[] Fourth_Update_Adds3;// que bonus le añade al jugador del Third
+    public float[] Fourth_Update_Adds3_shotgun;// que bonus le añade al jugador del Third
 
     public int[] Fourth_Update_Cost; // cuanto cuesta cada una de las updates
 
@@ -56,6 +58,7 @@ public class ShopManager : MonoBehaviour
     public Text Second_Text_Money;
     [Space]//gun speed
     public Text Third_Text;
+    public Text Third_Text_shotgun;
     public Text Third_Text_Money;
     [Space]//all
     public Text Fourth_Text_0;
@@ -63,6 +66,7 @@ public class ShopManager : MonoBehaviour
     public Text Fourth_Text_2;
     public Text Fourth_Text_2_sg;
     public Text Fourth_Text_3;
+    public Text Fourth_Text_3_shotgun;
     public Text Fourth_Text_Money;
 
     [Space]
@@ -175,7 +179,7 @@ public class ShopManager : MonoBehaviour
             case 3:
                 if (playerManag.RemoveCash(Third_Update_Cost[Third_Update_State]))
                 {
-                    playerManag.addCadency(Third_Update_Adds[Third_Update_State]);
+                    playerManag.addCadency(Third_Update_Adds[Third_Update_State], Third_Update_Adds_shotgun[Third_Update_State]);
                     this.Third_Update_State++;
                     setTextColorBlack(Third_Text_Money);
                 }
@@ -193,7 +197,7 @@ public class ShopManager : MonoBehaviour
                     playerManag.addSpeed(Fourth_Update_Adds0[Forth_Update_State]);
                     playerManag.addPlantsImprove(Fourth_Update_Adds1[Forth_Update_State]);
                     playerManag.addDamage(Fourth_Update_Adds2[Forth_Update_State], Fourth_Update_Adds2_shotgun[Forth_Update_State]);
-                    playerManag.addCadency(Fourth_Update_Adds3[Forth_Update_State]);
+                    playerManag.addCadency(Fourth_Update_Adds3[Forth_Update_State], Fourth_Update_Adds3_shotgun[Forth_Update_State]);
                     this.Forth_Update_State++;
                     setTextColorBlack(Fourth_Text_Money);
                 }
@@ -248,11 +252,13 @@ public class ShopManager : MonoBehaviour
         if (Third_Update_State < Third_Update_Adds.Length)
         {
             ReText(Third_Update_State, Third_Update_Adds, Third_Text); //bonus que añade
+            ReText(Third_Update_State, Third_Update_Adds_shotgun, Third_Text_shotgun); //bonus que añade
             ReText(Third_Update_State, Third_Update_Cost, Third_Text_Money); //Precio
         }
         else
         {
             ReText("Vendido", Third_Text); //bonus que añade
+            ReText("Vendido", Third_Text_shotgun);
             ReText("Vendido", Third_Text_Money); //Precio
         }
         //********************************  
@@ -263,6 +269,7 @@ public class ShopManager : MonoBehaviour
             ReText(Forth_Update_State, Fourth_Update_Adds2, Fourth_Text_2); //bonus que añade
             ReText(Forth_Update_State, Fourth_Update_Adds2_shotgun, Fourth_Text_2_sg); //bonus que añade
             ReText(Forth_Update_State, Fourth_Update_Adds3, Fourth_Text_3); //bonus que añade
+            ReText(Forth_Update_State, Fourth_Update_Adds3_shotgun, Fourth_Text_3_shotgun);
 
             ReText(Forth_Update_State, Fourth_Update_Cost, Fourth_Text_Money); //Precio
         }
@@ -273,6 +280,7 @@ public class ShopManager : MonoBehaviour
             ReText("Vendido", Fourth_Text_2); //bonus que añade
             ReText("Vendido", Fourth_Text_2_sg); //bonus que añade
             ReText("Vendido", Fourth_Text_3); //bonus que añade
+            ReText("Vendido", Fourth_Text_3_shotgun);
 
             ReText("Vendido", Fourth_Text_Money); //Precio
         }

@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour {
     public bool start_counting = false;
     public float day_time_duration = 120.0f;  //2 minutos
     public float night_time_duration = 300.0f;//5 minutos
+    public GameObject player_pj;
     public UiManager ui_manager;
 
     // Use this for initialization
@@ -117,6 +118,11 @@ public class CameraController : MonoBehaviour {
                         dayCycle = 1;
                         nightCam.SetActive(true);
                         nightStuff.SetActive(true);
+                        player_pj.SetActive(true);
+                        player_pj.GetComponent<PlayerShoot>().SetPlayer();
+
+                        Debug.Log("OSTIAS YA");
+
                         for (int i = 0; i < dayPots.Count; i++)
                         {
                             Transform[] tempTrans = dayPots[i].GetComponentsInChildren<Transform>();
@@ -152,6 +158,7 @@ public class CameraController : MonoBehaviour {
                         }
                         nightCam.SetActive(false);
                         nightStuff.SetActive(false);
+                        player_pj.SetActive(false);
                     }
                 }
                 alphaFadeIn -= Mathf.Clamp01(Time.deltaTime / timeToFade);
