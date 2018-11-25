@@ -14,6 +14,9 @@ TagManager:
   - Well
   - Bucket
   - TearFloor
+  - Auuuudio
+  - GameSeed
+  - GameBag
   layers:
   - Default
   - TransparentFX

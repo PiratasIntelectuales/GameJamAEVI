@@ -352,6 +352,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: {fileID: 1243910966894034, guid: f33cfca7ce3b1044aa975a37533ef5e0, type: 2}
+  finalLevelMusic: {fileID: 1193513281317544, guid: 77f46f5563daf63439307e2df6ab109e,
+    type: 2}
+  finalLevelFilm: {fileID: 1246886204162962, guid: 737db1b532bc5784fab2160ba59d66d8,
+    type: 2}
+  finalLevelGame: {fileID: 1938843321006496, guid: bbe59b7ae0184ea4797211aa9bd505f9,
+    type: 2}
   timeToGrow: 5
   offset: {x: -0.5, y: 4.24, z: 0}
   dropsNeeded: 4
