@@ -23,7 +23,7 @@ public class UiManager : MonoBehaviour {
         {
             GoStopMenu();
         }
-        if (Input.GetKey("l"))
+        if (Input.GetKey("l")) //Must be deleted
         {
             FinishDay();
         }
@@ -105,6 +105,11 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("Win", false);
         Uianimator.SetBool("Lose", false);
 
+    }
+
+    public void GoShop()
+    {
+        Uianimator.SetBool("Earned", true);
     }
 
 }
