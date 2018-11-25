@@ -101,11 +101,13 @@ public class PlayerShoot : MonoBehaviour {
                     Physics.Raycast(tmp_ray, out info, laser_shoot_distance, 9); //9 for Enemy
 
                     if (info.transform)
-                    {                       
-                        info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
+                    {
+                        
+                        if(info.transform.gameObject.layer == 9)
+                            info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
                     }
                     aM.Play("Enemy_Laser_1");
-                    LaserRenderTracer();
+                    LaserRenderTracer(info);
                     timer = 0.0f;
                 }
                 else
@@ -133,18 +135,23 @@ public class PlayerShoot : MonoBehaviour {
                         index++;
                     }
 
+                    RaycastHit[] infos = new RaycastHit[3];
+                    int infos_index = 0;
                     foreach (Ray ray in shots)
                     {
                         RaycastHit info;
                         Physics.Raycast(ray, out info, shotgun_shoot_distance, 9);
                         if (info.transform)
                         {
-                            info.transform.GetComponent<Enemy>().GetHit(shotgun_damage);
-                            
+                            if (info.transform.gameObject.layer == 9)
+                                info.transform.GetComponent<Enemy>().GetHit(laser_gun_damage);
                         }
+
+                        infos[infos_index] = info;
+                        infos_index++;
                     }
 
-                    ShotgunRenderTracer(shots);
+                    ShotgunRenderTracer(shots, infos);
                     timer = 0.0f;
 
                 }
@@ -190,33 +197,64 @@ public class PlayerShoot : MonoBehaviour {
                 shot.enabled = false;
         }
         
-        if(Input.GetMouseButton(1))
+        if(Input.GetMouseButtonDown(1) == true)
         {
-            shot_type = SHOT_TYPE.SHOTGUN;
+            if (shot_type == SHOT_TYPE.LASER)
+                shot_type = SHOT_TYPE.SHOTGUN;
+            else shot_type = SHOT_TYPE.LASER;
+            
         }
 
     }
 
-    void LaserRenderTracer()
+    void LaserRenderTracer(RaycastHit info)
     {
         shot.enabled = true;
         shot.SetPosition(0,shot_position.position);
-        shot.SetPosition(1,shot_position.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(1,shot_position.position + (transform.forward * info.distance));
         shot.SetPosition(2,shot_position.position);
-        shot.SetPosition(3,shot_position.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(3,shot_position.position + (transform.forward * info.distance));
         shot.SetPosition(4,shot_position.position);
-        shot.SetPosition(5,shot_position.position + (transform.forward * laser_shoot_distance));
+        shot.SetPosition(5,shot_position.position + (transform.forward * info.distance));
     }
 
-    void ShotgunRenderTracer(Ray[] directions)
+    void ShotgunRenderTracer(Ray[] directions, RaycastHit[] infos)
     {
         shot.enabled = true;
-        shot.SetPosition(0, shot_position_shotgun.position);
-        shot.SetPosition(1, shot_position_shotgun.position + (directions[0].direction * shotgun_shoot_distance));
-        shot.SetPosition(2, shot_position_shotgun.position);
-        shot.SetPosition(3, shot_position_shotgun.position + (directions[1].direction * shotgun_shoot_distance));
-        shot.SetPosition(4, shot_position_shotgun.position);
-        shot.SetPosition(5, shot_position_shotgun.position + (directions[2].direction * shotgun_shoot_distance));        
+
+        if(infos[0].distance != 0)
+        {
+            shot.SetPosition(0, shot_position_shotgun.position);
+            shot.SetPosition(1, shot_position_shotgun.position + (directions[0].direction * infos[0].distance));
+        }
+        else
+        {
+            shot.SetPosition(0, shot_position_shotgun.position);
+            shot.SetPosition(1, shot_position_shotgun.position + (directions[0].direction * shotgun_shoot_distance));
+        }
+
+        if (infos[1].distance != 0)
+        {
+            shot.SetPosition(2, shot_position_shotgun.position);
+            shot.SetPosition(3, shot_position_shotgun.position + (directions[1].direction * infos[1].distance));
+        }
+        else
+        {
+            shot.SetPosition(2, shot_position_shotgun.position);
+            shot.SetPosition(3, shot_position_shotgun.position + (directions[1].direction * shotgun_shoot_distance));
+        }
+
+        if (infos[2].distance != 0)
+        {
+            shot.SetPosition(4, shot_position_shotgun.position);
+            shot.SetPosition(5, shot_position_shotgun.position + (directions[2].direction * infos[2].distance));
+        }
+        else
+        {
+            shot.SetPosition(4, shot_position_shotgun.position);
+            shot.SetPosition(5, shot_position_shotgun.position + (directions[2].direction * shotgun_shoot_distance));
+        }
+
     }
 
     void HandleLineRenderer()
