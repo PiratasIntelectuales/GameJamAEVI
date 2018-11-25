@@ -17,6 +17,9 @@ TagManager:
   - Auuuudio
   - GameSeed
   - GameBag
+  - MaxMovies
+  - MaxMusic
+  - MaxGames
   layers:
   - Default
   - TransparentFX

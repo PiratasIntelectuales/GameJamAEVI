@@ -28,7 +28,23 @@ public class Enemy : MonoBehaviour {
     void Start ()
     {
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Plant");
-        target = temp[Random.Range(0, temp.Length)];
+        GameObject[] tempMovies = GameObject.FindGameObjectsWithTag("MaxMovies");
+        GameObject[] tempMusic = GameObject.FindGameObjectsWithTag("MaxMusic");
+        GameObject[] tempGames = GameObject.FindGameObjectsWithTag("MaxGames");
+        List<GameObject> tempList = new List<GameObject>();
+        foreach(GameObject plant in tempMovies)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempMusic)
+        {
+            tempList.Add(plant);
+        }
+        foreach (GameObject plant in tempGames)
+        {
+            tempList.Add(plant);
+        }
+        target = tempList[Random.Range(0, tempList.Count)];
         speed = maxSpeed;
 
         
