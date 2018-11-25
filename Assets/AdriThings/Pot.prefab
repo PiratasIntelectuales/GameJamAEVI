@@ -126,4 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicLvl1: {fileID: 1135319056987044, guid: f7d52c671f7602e40bdda11ecbc58a5f, type: 2}
   filmLvl1: {fileID: 0}
-  offsetmusicLvl1: {x: -0.5, y: 2.6, z: 0}
+  offsetmusicLvl1: {x: -0.5, y: 4.64, z: 0}
