@@ -5353,7 +5353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &386339496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5393,10 +5393,10 @@ MonoBehaviour:
   canvs: {fileID: 1067424235}
   Money_in_Shop: {fileID: 756925751}
   Zero_Update_Adds:
-  - 75
-  - 85
-  - 100
-  - 120
+  - 15
+  - 10
+  - 15
+  - 20
   Zero_Update_Cost: df020000f70300002d050000fa050000
   First_Update_Adds:
   - 1.2
@@ -5404,34 +5404,42 @@ MonoBehaviour:
   - 2.4
   - 3.4
   First_Update_Cost: 26020000ca030000f005000080070000
-  Second_Update_Adds: 30000000460000006200000076000000
-  Second_Update_Adds_shotgun: 2d000000430000005500000062000000
+  Second_Update_Adds: 0d000000160000001c00000014000000
+  Second_Update_Adds_shotgun: 0d00000016000000120000000d000000
   Second_Update_Cost: d5020000fc0300003c05000036060000
   Third_Update_Adds:
-  - 1.5
-  - 1.7
-  - 2
-  - 3.5
-  Third_Update_Adds_shotgun: []
+  - 0.05
+  - 0.05
+  - 0.03
+  - 0.012
+  Third_Update_Adds_shotgun:
+  - 0.2
+  - 0.15
+  - 0.11
+  - 0.04
   Third_Update_Cost: b7020000e8030000be050000ae060000
   Fourth_Update_Adds0:
-  - 0.05
-  - 0.05
-  - 0.1
-  - 0.15
+  - 5
+  - 4
+  - 6
+  - 8
   Fourth_Update_Adds1:
-  - 0.2
-  - 0.35
-  - 0.35
-  - 0.25
-  Fourth_Update_Adds2: 0700000009000000090000000c000000
-  Fourth_Update_Adds2_shotgun: 05000000080000000a0000000c000000
+  - 1.2
+  - 2
+  - 2.6
+  - 3.5
+  Fourth_Update_Adds2: 06000000060000000700000009000000
+  Fourth_Update_Adds2_shotgun: 04000000040000000500000007000000
   Fourth_Update_Adds3:
-  - 0.05
-  - 0.1
-  - 0.15
-  - 0.2
-  Fourth_Update_Adds3_shotgun: []
+  - 0.012
+  - 0.005
+  - 0.01
+  - 0.008
+  Fourth_Update_Adds3_shotgun:
+  - 0.018
+  - 0.015
+  - 0.02
+  - 0.015
   Fourth_Update_Cost: 84030000280500007206000007080000
   Zero_Text: {fileID: 1317870621}
   Zero_Text_Money: {fileID: 2110126438}
@@ -7292,7 +7300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: -102.99999}
+  m_AnchoredPosition: {x: -26, y: -101}
   m_SizeDelta: {x: 65.99, y: 40.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517271138
@@ -12156,6 +12164,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4899617485049852, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
     type: 2}
   m_PrefabInternal: {fileID: 1162884609}
+--- !u!114 &890398871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114515857931612472, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1162884609}
+  m_Script: {fileID: 11500000, guid: 033b1c9af43f53f42ab734da14584b08, type: 3}
+--- !u!114 &890398872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114396087714746240, guid: 9bebcf9e8a50b7849bea7c7e8c31453b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1162884609}
+  m_Script: {fileID: 11500000, guid: d9157704c7b3eb241ab3588be6378140, type: 3}
 --- !u!1 &891765379
 GameObject:
   m_ObjectHideFlags: 0
@@ -14817,6 +14837,7 @@ RectTransform:
   - {fileID: 1894958801}
   - {fileID: 1835671532}
   - {fileID: 133600808}
+  - {fileID: 2065436539}
   m_Father: {fileID: 751792824}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18150,7 +18171,7 @@ MonoBehaviour:
   blackTexture: {fileID: 2800000, guid: ffbe16bef9e09e34687297794a78c313, type: 3}
   start_counting: 0
   day_time_duration: 2
-  night_time_duration: 10000
+  night_time_duration: 2
   player_pj: {fileID: 890398868}
   ui_manager: {fileID: 1067424240}
 --- !u!1 &1356891336
@@ -20218,8 +20239,8 @@ MonoBehaviour:
   Cash: 0
   Initial_Cash: 50
   Bank: {fileID: 495043813}
-  player: {fileID: 0}
-  player_move: {fileID: 0}
+  player: {fileID: 890398871}
+  player_move: {fileID: 890398872}
   SPD: {fileID: 0}
   PLN: {fileID: 0}
   DMG: {fileID: 0}
@@ -20790,7 +20811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1602557970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26663,6 +26684,81 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &2065436538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065436539}
+  - component: {fileID: 2065436541}
+  - component: {fileID: 2065436540}
+  m_Layer: 5
+  m_Name: Boost (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2065436539
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2065436538}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -13}
+  m_LocalScale: {x: 1.0000085, y: 1.0000085, z: 1.0000085}
+  m_Children: []
+  m_Father: {fileID: 1114144159}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 71, y: -102}
+  m_SizeDelta: {x: 65.99, y: 40.72}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2065436540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2065436538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: c5d137f3ae771d64d953dc8ce4cdf9f2, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 100
+--- !u!222 &2065436541
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2065436538}
+  m_CullTransparentMesh: 0
 --- !u!1 &2086947207
 GameObject:
   m_ObjectHideFlags: 0
@@ -27468,7 +27564,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1000
+          m_IntArgument: 10000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

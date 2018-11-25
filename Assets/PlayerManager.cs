@@ -85,8 +85,16 @@ public class PlayerManager : MonoBehaviour
     public void addCadency(float cadency, float candency_shotgun)
     {
         //add damage
-        player.laser_time_between_shots -= cadency;
-        player.shotgun_time_between_shots -= candency_shotgun;
+        if ((player.laser_time_between_shots - cadency) < 0.04f)
+        {
+            player.laser_time_between_shots -= cadency;
+            player.shotgun_time_between_shots -= candency_shotgun;
+        }
+        else
+        {
+            player.laser_time_between_shots = 0.04f;
+            player.shotgun_time_between_shots = 0.15f;
+        }
     }
     public void addPlantsImprove(float improve)
     {
