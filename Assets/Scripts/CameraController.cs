@@ -20,6 +20,12 @@ public class CameraController : MonoBehaviour {
     private float alphaFadeOut = 0.0f;
     private float alphaFadeIn = 1.0f;
 
+    private float day_night_timer = 0.0f;
+    public bool start_counting = false;
+    public float day_time_duration = 120.0f;  //2 minutos
+    public float night_time_duration = 300.0f;//5 minutos
+    public UiManager ui_manager;
+
     // Use this for initialization
     void Start () {
 		
@@ -47,16 +53,52 @@ public class CameraController : MonoBehaviour {
         //{
         //    yRot = 0;
         //}
+        if(start_counting)
+        {
+            if(dayCycle == 0)//day
+            {
+                if (day_night_timer >= day_time_duration)
+                {
+                    Switch();
+
+                }
+            }
+
+            if (dayCycle == 1)//day
+            {
+                if (day_night_timer >= night_time_duration)
+                {
+                    //Activate Shop menu
+                    ui_manager.FinishDay();
+                }
+            }
+
+            day_night_timer += Time.deltaTime;
+        }
+        
+
         if(Input.GetKeyDown(KeyCode.F) == true)
         {
             Switch();
         }
 	}
 
+    public void SetCounter(bool value)
+    {
+        start_counting = value;
+    }
+
+    public void RestartCounter()
+    {
+        day_night_timer = 0.0f;
+    }
+
     private void OnGUI()
     {
         if (switching)
         {
+            start_counting = false;
+
             if (alphaFadeOut < 1.0f && fadingOut == true)
             {
                 alphaFadeOut += Mathf.Clamp01(Time.deltaTime / timeToFade);
@@ -120,6 +162,8 @@ public class CameraController : MonoBehaviour {
             {
                 switching = false;
                 fadingIn = false;
+                start_counting = true;
+                day_night_timer = 0.0f;
             }
         }
     }
@@ -130,5 +174,18 @@ public class CameraController : MonoBehaviour {
         fadingOut = true;
         alphaFadeOut = 0.0f;
         alphaFadeIn = 1.0f;
+    }
+
+    public float GetTotalTime()
+    {
+        return (day_time_duration + night_time_duration);
+    }
+
+    public float GetCurrentTime()
+    {
+        float ret = day_night_timer;
+        if (dayCycle == 1)
+            ret += day_time_duration;
+        return ret;
     }
 }

@@ -12,6 +12,8 @@ public class UiManager : MonoBehaviour {
     public float Points; //puntos que tiene el jugador
     public float LimitPoints; // limite de puntos para ganar
 
+    public CameraController day_night_cycle_manager;
+
     void Start()
     {
         Uianimator = GetComponent<Animator>(); 
@@ -48,6 +50,7 @@ public class UiManager : MonoBehaviour {
     {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("FinishedDay", false);
+        Uianimator.SetBool("Earned", false);
     }
 
     public void FinishDay()
@@ -67,6 +70,9 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("InStartMenu", false);
         Uianimator.SetBool("InStopMenu", false);
+
+        //Stop counting day/night time
+        day_night_cycle_manager.SetCounter(true);
     }
 
     public void Win()
@@ -105,11 +111,17 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("Win", false);
         Uianimator.SetBool("Lose", false);
 
+        //Stop counting day/night time
+        day_night_cycle_manager.SetCounter(false);
+
     }
 
     public void GoShop()
     {
         Uianimator.SetBool("Earned", true);
+
+        //Stop counting day/night time
+        day_night_cycle_manager.SetCounter(false);
     }
 
 }
