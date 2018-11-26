@@ -10,6 +10,8 @@ public enum SHOT_TYPE
 
 public class PlayerShoot : MonoBehaviour {
 
+   public Animator Uianimator;
+
     // Use this for initialization
     public float laser_time_between_shots = 0.5f;
     public float shotgun_time_between_shots = 0.5f;
@@ -71,17 +73,20 @@ public class PlayerShoot : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        //Line renderer shut down
-        HandleLineRenderer();
+        if (Uianimator.GetBool("2part"))
+        {
 
-        HandleParticles();
+            //Line renderer shut down
+            HandleLineRenderer();
 
-        //Rotate
-        HandleRotation();
+            HandleParticles();
 
-        //Shoot
-        HandleShooting();
+            //Rotate
+            HandleRotation();
 
+            //Shoot
+            HandleShooting();
+        }
     }
 
     void Shoot()
@@ -185,6 +190,9 @@ public class PlayerShoot : MonoBehaviour {
 
     void HandleShooting()
     {
+
+
+       
         //if right Click
         if(Input.GetMouseButton(0))
         {
@@ -205,7 +213,7 @@ public class PlayerShoot : MonoBehaviour {
 
             FindObjectOfType<AudioManager>().Play("Cambio_Gun");
         }
-
+        
     }
 
     void LaserRenderTracer(RaycastHit info)

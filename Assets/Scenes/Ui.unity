@@ -6491,7 +6491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1562942807}
-  canvs: {fileID: 1067424235}
   Money_in_Shop: {fileID: 756925751}
   Zero_Update_Adds:
   - 15
@@ -15891,6 +15890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033b1c9af43f53f42ab734da14584b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Uianimator: {fileID: 1067424241}
   laser_time_between_shots: 0.15
   shotgun_time_between_shots: 0.5
   laser_shoot_distance: 500
@@ -24473,6 +24473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToFade: 2
+  Uianimator: {fileID: 1067424241}
   dayStuff: {fileID: 759051179}
   nightStuff: {fileID: 628649310}
   dayPots:

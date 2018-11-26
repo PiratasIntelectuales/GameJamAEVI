@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
     public int life = 1;
     public float timeToDie = 3.0f;
 
-    bool particle_spawn_activated = true;
+ 
     float particle_timer = 0.0f;
     public GameObject prefab_spawn_particle_system;
     GameObject spawn_particle_system;

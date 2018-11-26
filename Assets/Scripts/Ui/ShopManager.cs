@@ -9,9 +9,6 @@ public class ShopManager : MonoBehaviour
     public GameObject Player;
     PlayerManager playerManag;
 
-    public GameObject canvs;
-    Animator animtor;
-
     public Text Money_in_Shop;
     [Header("Speed")]
     //deww
@@ -140,7 +137,7 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     // cant buuy
-                    // animtor.SetTrigger("CantBuy");
+      
 
                     setTextColorRed(Zero_Text_Money);
                 }
@@ -157,7 +154,7 @@ public class ShopManager : MonoBehaviour
                 {
                     setTextColorRed(First_Text_Money);
                     // cant buuy
-                    //animtor.SetTrigger("CantBuy");
+                
                 }
                 break;
             case 2:
@@ -172,7 +169,7 @@ public class ShopManager : MonoBehaviour
 
                     setTextColorRed(Second_Text_Money);
                     // cant buuy
-                    //animtor.SetTrigger("CantBuy");
+              
                 }
                 break;
 
@@ -187,7 +184,7 @@ public class ShopManager : MonoBehaviour
                 {
                     setTextColorRed(Third_Text_Money);
                     // cant buuy
-                    //animtor.SetTrigger("CantBuy");
+              
                 }
                 break;
 
@@ -205,7 +202,7 @@ public class ShopManager : MonoBehaviour
                 {
                     setTextColorRed(Fourth_Text_Money);
                     // cant buuy
-                    //animtor.SetTrigger("CantBuy");
+
                 }
 
                 break;
@@ -320,7 +317,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         playerManag = Player.GetComponent<PlayerManager>();
-        animtor = canvs.GetComponent<Animator>();
+      
     }
 
     void Update()

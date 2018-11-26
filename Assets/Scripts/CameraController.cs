@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     public float timeToFade = 2.0f;
 
+    public Animator Uianimator;
+
     public GameObject dayStuff;
     public GameObject nightStuff;
     public List<GameObject> dayPots;
@@ -62,8 +64,8 @@ public class CameraController : MonoBehaviour {
                 {
 
                     Switch();
-                    FindObjectOfType<AudioManager>().LazerON();
                     FindObjectOfType<AudioManager>().changeBSO(0);
+                    Uianimator.SetBool("2part", true);
                 }
             }
 

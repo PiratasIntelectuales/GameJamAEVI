@@ -62,13 +62,14 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("FinishedDay", false);
         Uianimator.SetBool("Earned", false);
+
     }
 
     public void FinishDay()
     {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("FinishedDay", true);
-
+         Uianimator.SetBool("2part", false);
         FindObjectOfType<AudioManager>().LazerOFF();
     }
 
@@ -76,7 +77,7 @@ public class UiManager : MonoBehaviour {
     {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("InStartMenu", false);
-
+        Uianimator.SetBool("2part", false);
     }
 
     public void Resume()
@@ -94,6 +95,7 @@ public class UiManager : MonoBehaviour {
     public void Win()
     {
         Uianimator.SetBool("Playing", false);
+        Uianimator.SetBool("2part", false);
         Uianimator.SetBool("Win", true);
         Uianimator.SetBool("Lose", false);
         FindObjectOfType<AudioManager>().LazerOFF();
@@ -104,7 +106,7 @@ public class UiManager : MonoBehaviour {
     {
         FindObjectOfType<AudioManager>().LazerOFF();
         day_night_cycle_manager.SetCounter(false);
-
+        Uianimator.SetBool("2part", false);
         Uianimator.SetBool("Playing", false);
         Uianimator.SetBool("Win", false);
         Uianimator.SetBool("Lose", true);
@@ -120,7 +122,7 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("ToQuit", false);
         Uianimator.SetBool("Win", false);
         Uianimator.SetBool("Lose", false);
-
+        Uianimator.SetBool("2part", false);
     }
 
     public void GoStopMenu()
@@ -141,7 +143,7 @@ public class UiManager : MonoBehaviour {
     public void GoShop()
     {
         Uianimator.SetBool("Earned", true);
-
+        Uianimator.SetBool("2part", false);
         //Stop counting day/night time
         day_night_cycle_manager.SetCounter(false);
     }
