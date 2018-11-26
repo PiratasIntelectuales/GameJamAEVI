@@ -13911,7 +13911,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Enemy_Hit_2
     clip: {fileID: 8300000, guid: edfa9d0ca31985e4d858de1cb6f6c5fb, type: 3}
-    volume: 1
+    volume: 1.17
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -13935,7 +13935,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Enemy_dead_1
     clip: {fileID: 8300000, guid: f039a956961bd5d4eb0f00347e5ad5dd, type: 3}
-    volume: 1
+    volume: 0.78
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -24491,7 +24491,7 @@ MonoBehaviour:
   nightCam: {fileID: 2013151864}
   blackTexture: {fileID: 2800000, guid: ffbe16bef9e09e34687297794a78c313, type: 3}
   start_counting: 0
-  day_time_duration: 90
+  day_time_duration: 10
   night_time_duration: 180
   player_pj: {fileID: 890398868}
   ui_manager: {fileID: 1067424240}
@@ -32527,11 +32527,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cash: 0
-  Initial_Cash: 50
+  Initial_Cash: 0
   Bank: {fileID: 495043813}
+  enemyMoneydrop: 5
   player: {fileID: 890398871}
   player_move: {fileID: 890398872}
-  moneyEarnss: {fileID: 0}
+  moneyEarnss: {fileID: 2063168515}
   SPD: {fileID: 0}
   PLN: {fileID: 0}
   DMG: {fileID: 0}
@@ -41516,9 +41517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicprice: 200
-  CDs_Price: 0
-  Movies_Price: 0
-  Games_Price: 0
+  CDs_Price: 200
+  Movies_Price: 200
+  Games_Price: 200
   CDs_Quantity: 0
   Movies_Quantity: 0
   Games_Quantity: 0

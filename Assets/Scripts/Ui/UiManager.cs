@@ -20,7 +20,8 @@ public class UiManager : MonoBehaviour {
 
     void Start()
     {
-        Uianimator = GetComponent<Animator>(); 
+        Uianimator = GetComponent<Animator>();
+        FindObjectOfType<AudioManager>().LazerOFF();
     }
 
     void Update()
@@ -57,6 +58,7 @@ public class UiManager : MonoBehaviour {
 
     public void NextDay()
     {
+        AddDay();
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("FinishedDay", false);
         Uianimator.SetBool("Earned", false);
@@ -66,12 +68,15 @@ public class UiManager : MonoBehaviour {
     {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("FinishedDay", true);
+
+        FindObjectOfType<AudioManager>().LazerOFF();
     }
 
     public void Play()
     {
         Uianimator.SetBool("Playing", true);
         Uianimator.SetBool("InStartMenu", false);
+
     }
 
     public void Resume()
@@ -82,6 +87,8 @@ public class UiManager : MonoBehaviour {
 
         //Stop counting day/night time
         day_night_cycle_manager.SetCounter(true);
+
+        FindObjectOfType<AudioManager>().LazerON();
     }
 
     public void Win()
@@ -89,11 +96,15 @@ public class UiManager : MonoBehaviour {
         Uianimator.SetBool("Playing", false);
         Uianimator.SetBool("Win", true);
         Uianimator.SetBool("Lose", false);
-
+        FindObjectOfType<AudioManager>().LazerOFF();
     }
+
 
     public void Lose()
     {
+        FindObjectOfType<AudioManager>().LazerOFF();
+        day_night_cycle_manager.SetCounter(false);
+
         Uianimator.SetBool("Playing", false);
         Uianimator.SetBool("Win", false);
         Uianimator.SetBool("Lose", true);
@@ -102,6 +113,7 @@ public class UiManager : MonoBehaviour {
 
     public void GoStartMenu()
     {
+        FindObjectOfType<AudioManager>().LazerOFF();
         Uianimator.SetBool("Playing", false);
         Uianimator.SetBool("InStartMenu", true);
         Uianimator.SetBool("InStopMenu", false);
@@ -113,6 +125,7 @@ public class UiManager : MonoBehaviour {
 
     public void GoStopMenu()
     {
+        FindObjectOfType<AudioManager>().LazerOFF();
         Uianimator.SetBool("Playing", false);
         Uianimator.SetBool("InStartMenu", false);
         Uianimator.SetBool("InStopMenu", true);

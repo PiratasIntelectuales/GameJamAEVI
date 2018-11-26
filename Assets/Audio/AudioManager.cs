@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
        Play("bso_1");
+        LazerOFF();
     }
 	
 	public void Play (string name )
@@ -73,6 +74,21 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.volume = 0;
+    }
+
+    public void LazerON()
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "Enemy_Laser_1");
+        Sound s2 = Array.Find(sounds, sound => sound.name == "Enemy_Laser_2");
+        s.volume = 0.8f;
+        s2.volume = 1f;
+    }
+    public void LazerOFF()
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "Enemy_Laser_1");
+        Sound s2 = Array.Find(sounds, sound => sound.name == "Enemy_Laser_2");
+        s.volume = 0;
+        s2.volume = 0;
     }
 
     public void changeBSO(int i)//0 day/night - 1 night/day

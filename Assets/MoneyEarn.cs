@@ -30,8 +30,7 @@ public class MoneyEarn : MonoBehaviour
     
     void Start()
     {
-        pManager = player.GetComponent<PlayerManager>();
-       
+        pManager = player.GetComponent<PlayerManager>();       
     }
    
     void OnEnable()

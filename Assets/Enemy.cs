@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     public float minSpeed = 0.5f;
     public float deceleration = 0.1f;
 
+
     private float speed = 0.0f;
     private GameObject target;
     private bool reached = false;
@@ -52,7 +53,7 @@ public class Enemy : MonoBehaviour {
         target = tempList[Random.Range(0, tempList.Count)];
         speed = maxSpeed;
 
-        
+     
     }
 
     private void OnEnable()
@@ -159,6 +160,8 @@ void Update ()
 
     void Die()
     {
+        FindObjectOfType<PlayerManager>().AddCash(5);
+      
         Destroy(gameObject);
     }
 

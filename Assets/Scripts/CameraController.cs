@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour {
                 {
 
                     Switch();
-
+                    FindObjectOfType<AudioManager>().LazerON();
                     FindObjectOfType<AudioManager>().changeBSO(0);
                 }
             }

@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public int Initial_Cash;    
     public Text Bank;
     [Space]
+    public int enemyMoneydrop;
     [Space]
 
     public PlayerShoot player;
@@ -34,7 +35,6 @@ public class PlayerManager : MonoBehaviour
 
     //DEBUG ************************************************************************
     
-
     void ReText(int Cash, Text text)
     {
         text.text = Cash.ToString();
